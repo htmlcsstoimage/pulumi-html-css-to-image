@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.htmlcsstoimage</groupId>
+  <artifactId>pulumi</artifactId>
+  <version>@VERSION@</version>
+  <name>HTML/CSS to Image Pulumi SDK</name>
+  <description>Manage HTML/CSS to Image resources with Pulumi.</description>
+  <url>https://htmlcsstoimage.com</url>
+  <licenses><license><name>MIT License</name><url>https://opensource.org/license/mit/</url></license></licenses>
+  <developers><developer><id>htmlcsstoimage</id><name>HTML/CSS to Image</name><url>https://htmlcsstoimage.com</url></developer></developers>
+  <scm>
+    <connection>scm:git:https://github.com/htmlcsstoimage/pulumi-html-css-to-image.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/htmlcsstoimage/pulumi-html-css-to-image.git</developerConnection>
+    <url>https://github.com/htmlcsstoimage/pulumi-html-css-to-image</url>
+  </scm>
+  <properties>
+    <maven.compiler.release>11</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><version>5.11.4</version><scope>test</scope></dependency>
+    <dependency><groupId>com.pulumi</groupId><artifactId>pulumi</artifactId><version>1.0.0</version></dependency>
+    <dependency><groupId>com.google.code.gson</groupId><artifactId>gson</artifactId><version>2.8.9</version></dependency>
+    <dependency><groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId><version>3.0.2</version></dependency>
+  </dependencies>
+  <build><plugins>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.3</version>
+      <configuration><systemPropertyVariables><sdk.version>${project.version}</sdk.version></systemPropertyVariables></configuration>
+    </plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.0</version></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-source-plugin</artifactId><version>3.3.1</version>
+      <executions><execution><id>sources</id><goals><goal>jar-no-fork</goal></goals></execution></executions>
+    </plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId><version>3.11.2</version>
+      <configuration><doclint>none</doclint></configuration>
+      <executions><execution><id>javadoc</id><goals><goal>jar</goal></goals></execution></executions>
+    </plugin>
+  </plugins></build>
+  <profiles><profile><id>release</id><build><plugins>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-gpg-plugin</artifactId><version>3.2.8</version>
+      <configuration><bestPractices>true</bestPractices></configuration>
+      <executions><execution><id>sign</id><phase>verify</phase><goals><goal>sign</goal></goals></execution></executions>
+    </plugin>
+    <plugin><groupId>org.sonatype.central</groupId><artifactId>central-publishing-maven-plugin</artifactId><version>0.9.0</version><extensions>true</extensions>
+      <configuration>
+        <publishingServerId>central</publishingServerId>
+        <autoPublish>true</autoPublish>
+        <waitUntil>published</waitUntil>
+        <waitMaxTime>1800</waitMaxTime>
+      </configuration>
+    </plugin>
+  </plugins></build></profile></profiles>
+</project>

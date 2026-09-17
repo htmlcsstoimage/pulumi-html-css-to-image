@@ -1,0 +1,68 @@
+name: CI
+on:
+  push:
+    branches-ignore: [sdk]
+    tags-ignore: ['sdk/go/**']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GOWORK: 'off'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: provider
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: provider/go.sum
+      - name: Generate schema and build
+        working-directory: provider
+        run: |
+          make build
+          git diff --exit-code -- internal/provider/schema.json
+      - name: Test
+        working-directory: provider
+        run: make test
+      - name: Vet
+        working-directory: provider
+        run: make vet
+      - name: Test Go SDK publishing
+        working-directory: provider
+        run: bash scripts/test-publish-go-sdk.sh
+  sdks:
+    runs-on: ubuntu-latest
+    env:
+      GOWORK: 'off'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: pulumi/actions@v6
+        with:
+          pulumi-version: '3.245.0'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: packaging/java/pom.xml
+      - name: Generate SDKs and check schema
+        run: |
+          make sdk
+          git diff --exit-code -- internal/provider/schema.json
+      - name: Build SDK packages
+        run: bash scripts/package-sdks.sh

@@ -1,0 +1,21 @@
+name: hcti-api-key-example
+runtime: yaml
+description: Manage an HTML/CSS to Image API key with the local provider.
+resources:
+  hcti:
+    type: pulumi:providers:html-css-to-image
+    defaultProvider: true
+    options:
+      version: 0.1.0
+      pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
+  rendering:
+    type: html-css-to-image:index:ApiKey
+    properties:
+      name: Rendering service
+      description: Create images and read templates
+      permissions:
+        - images:create
+        - templates:read
+outputs:
+  renderingApiId: ${rendering.apiId}
+  renderingApiKey: ${rendering.apiKey}

@@ -1,0 +1,42 @@
+name: hcti-images-example
+runtime: yaml
+description: Create image definitions without rendering bytes.
+config:
+  pageAuthorization:
+    type: string
+    secret: true
+resources:
+  hcti:
+    type: pulumi:providers:html-css-to-image
+    defaultProvider: true
+    options:
+      version: 0.1.0
+      pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
+  htmlCard:
+    type: html-css-to-image:index:ImageHtmlCss
+    properties:
+      html: '<h1>Hello from Pulumi</h1>'
+      css: 'h1 { font-family: Inter; padding: 48px; }'
+      googleFonts:
+        - Inter
+      format: webp
+  page:
+    type: html-css-to-image:index:ImageUrl
+    properties:
+      url: https://example.com
+      headers:
+        Authorization: ${pageAuthorization}
+  design:
+    type: html-css-to-image:index:Template
+    properties:
+      html: '<h1>{{title}}</h1>'
+  templatedCard:
+    type: html-css-to-image:index:ImageTemplated
+    properties:
+      templateId: ${design.id}
+      # Optional: pinning replaces the image when the template version changes.
+      templateVersion: ${design.version}
+      templateValues: '{"title":"Hello from a template"}'
+outputs:
+  imageUrl: ${htmlCard.imageUrl}
+  resolvedTemplateVersion: ${templatedCard.resolvedTemplateVersion}

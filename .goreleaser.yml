@@ -1,0 +1,29 @@
+version: 2
+project_name: pulumi-resource-html-css-to-image
+builds:
+  - main: ./cmd/pulumi-resource-html-css-to-image
+    binary: pulumi-resource-html-css-to-image
+    env: [CGO_ENABLED=0, GOWORK=off]
+    flags: [-trimpath, -mod=readonly]
+    ldflags:
+      - '-s -w -X main.version={{ .Version }}'
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+archives:
+  - formats: [tar.gz]
+    name_template: '{{ .ProjectName }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}'
+    files: [LICENSE]
+checksum:
+  name_template: '{{ .ProjectName }}-v{{ .Version }}-checksums.txt'
+  algorithm: sha256
+  extra_files:
+    - glob: internal/provider/schema.json
+      name_template: schema.json
+release:
+  draft: true
+  prerelease: auto
+  extra_files:
+    - glob: internal/provider/schema.json
+      name_template: schema.json
+changelog:
+  use: github-native

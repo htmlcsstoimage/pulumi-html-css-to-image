@@ -1,0 +1,3058 @@
+{
+  "attribution": "This Pulumi package is based on the [`html-css-to-image` Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image).",
+  "config": {
+    "variables": {
+      "apiId": {
+        "defaultInfo": {
+          "environment": [
+            "HCTI_API_ID"
+          ]
+        },
+        "description": "API ID. Falls back to HCTI_API_ID.",
+        "type": "string"
+      },
+      "apiKey": {
+        "defaultInfo": {
+          "environment": [
+            "HCTI_API_KEY"
+          ]
+        },
+        "description": "API key. Falls back to HCTI_API_KEY.",
+        "secret": true,
+        "type": "string"
+      },
+      "baseUrl": {
+        "description": "API origin. Defaults to https://hcti.io.",
+        "type": "string"
+      }
+    }
+  },
+  "description": "Manage HTML/CSS to Image resources with Pulumi.",
+  "displayName": "HTML/CSS to Image",
+  "functions": {
+    "html-css-to-image:index:getAwsStorageExternalId": {
+      "outputs": {
+        "description": "A collection of values returned by getAwsStorageExternalId.\n",
+        "properties": {
+          "externalId": {
+            "type": "string"
+          },
+          "writerRoleArn": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "externalId",
+          "writerRoleArn"
+        ],
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:getTemplate": {
+      "inputs": {
+        "description": "A collection of arguments for invoking getTemplate.\n",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "outputs": {
+        "description": "A collection of values returned by getTemplate.\n",
+        "properties": {
+          "colorScheme": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "css": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "deviceScale": {
+            "type": "number"
+          },
+          "disableTwemoji": {
+            "type": "boolean"
+          },
+          "googleFonts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "html": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "jumboMaxHeight": {
+            "type": "integer"
+          },
+          "jumboMaxWidth": {
+            "type": "integer"
+          },
+          "maxWaitMs": {
+            "type": "integer"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "msDelay": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "proxyId": {
+            "type": "string"
+          },
+          "renderWhenReady": {
+            "type": "boolean"
+          },
+          "selector": {
+            "type": "string"
+          },
+          "storageDestinationId": {
+            "type": "string"
+          },
+          "templateType": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "transparentBackground": {
+            "type": "boolean"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "viewportHeight": {
+            "type": "integer"
+          },
+          "viewportLandscape": {
+            "type": "boolean"
+          },
+          "viewportMobile": {
+            "type": "boolean"
+          },
+          "viewportTouch": {
+            "type": "boolean"
+          },
+          "viewportWidth": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "colorScheme",
+          "createdAt",
+          "css",
+          "description",
+          "deviceScale",
+          "disableTwemoji",
+          "googleFonts",
+          "html",
+          "id",
+          "jumboMaxHeight",
+          "jumboMaxWidth",
+          "maxWaitMs",
+          "mediaType",
+          "msDelay",
+          "name",
+          "proxyId",
+          "renderWhenReady",
+          "selector",
+          "storageDestinationId",
+          "templateType",
+          "timezone",
+          "transparentBackground",
+          "updatedAt",
+          "version",
+          "viewportHeight",
+          "viewportLandscape",
+          "viewportMobile",
+          "viewportTouch",
+          "viewportWidth"
+        ],
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:getTemplateVersions": {
+      "inputs": {
+        "description": "A collection of arguments for invoking getTemplateVersions.\n",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "outputs": {
+        "description": "A collection of values returned by getTemplateVersions.\n",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "versions": {
+            "items": {
+              "$ref": "#/types/html-css-to-image:index/getTemplateVersionsVersion:getTemplateVersionsVersion"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "limit",
+          "versions"
+        ],
+        "type": "object"
+      }
+    },
+    "pulumi:providers:html-css-to-image/terraformConfig": {
+      "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+      "inputs": {
+        "properties": {
+          "__self__": {
+            "$ref": "#/provider",
+            "type": "ref"
+          }
+        },
+        "required": [
+          "__self__"
+        ],
+        "type": "pulumi:providers:html-css-to-image/terraformConfig"
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "additionalProperties": {
+              "$ref": "pulumi.json#/Any"
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "homepage": "https://htmlcsstoimage.com",
+  "language": {
+    "csharp": {
+      "compatibility": "tfbridge20",
+      "packageReferences": {
+        "Pulumi": "3.*"
+      },
+      "respectSchemaVersion": true,
+      "rootNamespace": "Pulumi"
+    },
+    "go": {
+      "generateExtraInputTypes": true,
+      "importBasePath": "github.com/htmlcsstoimage/pulumi-html-css-to-image/sdk/go",
+      "respectSchemaVersion": true,
+      "rootPackageName": "htmlcsstoimage"
+    },
+    "java": {
+      "basePackage": "com.htmlcsstoimage",
+      "buildFiles": "",
+      "gradleNexusPublishPluginVersion": "",
+      "gradleTest": "",
+      "packages": {
+        "html-css-to-image": "pulumi"
+      }
+    },
+    "nodejs": {
+      "compatibility": "tfbridge20",
+      "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+      },
+      "disableUnionOutputTypes": true,
+      "packageDescription": "Manage HTML/CSS to Image resources with Pulumi.",
+      "packageName": "@html-css-to-image/pulumi",
+      "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-html-css-to-image` repo](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-html-css-to-image` repo](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image/issues).",
+      "respectSchemaVersion": true
+    },
+    "python": {
+      "compatibility": "tfbridge20",
+      "packageName": "pulumi_html_css_to_image",
+      "pyproject": {},
+      "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-html-css-to-image` repo](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-html-css-to-image` repo](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image/issues).",
+      "requires": {
+        "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+      },
+      "respectSchemaVersion": true
+    }
+  },
+  "license": "MIT",
+  "meta": {
+    "moduleFormat": "(.*)(?:/[^/]*)"
+  },
+  "name": "html-css-to-image",
+  "pluginDownloadURL": "github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image",
+  "provider": {
+    "description": "The provider type for the html-css-to-image package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+    "inputProperties": {
+      "apiId": {
+        "defaultInfo": {
+          "environment": [
+            "HCTI_API_ID"
+          ]
+        },
+        "description": "API ID. Falls back to HCTI_API_ID.",
+        "type": "string"
+      },
+      "apiKey": {
+        "defaultInfo": {
+          "environment": [
+            "HCTI_API_KEY"
+          ]
+        },
+        "description": "API key. Falls back to HCTI_API_KEY.",
+        "secret": true,
+        "type": "string"
+      },
+      "baseUrl": {
+        "description": "API origin. Defaults to https://hcti.io.",
+        "type": "string"
+      }
+    },
+    "methods": {
+      "terraformConfig": "pulumi:providers:html-css-to-image/terraformConfig"
+    },
+    "properties": {
+      "apiId": {
+        "description": "API ID. Falls back to HCTI_API_ID.",
+        "type": "string"
+      },
+      "apiKey": {
+        "description": "API key. Falls back to HCTI_API_KEY.",
+        "secret": true,
+        "type": "string"
+      },
+      "baseUrl": {
+        "description": "API origin. Defaults to https://hcti.io.",
+        "type": "string"
+      }
+    }
+  },
+  "publisher": "htmlcsstoimage",
+  "repository": "https://github.com/htmlcsstoimage/pulumi-html-css-to-image",
+  "resources": {
+    "html-css-to-image:index:ApiKey": {
+      "inputProperties": {
+        "allFuturePermissions": {
+          "description": "Grant all current and future permissions. Requires caller authority. Defaults to false.",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Purpose of the key, up to 2000 characters. Omitted, null, or blank clears it.",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "Disable authentication with the key. Defaults to false.",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "Display name, up to 255 characters. Omitted, null, or blank uses an API-generated name based on the original creation time.",
+          "type": "string"
+        },
+        "permissions": {
+          "description": "Complete permission set. Required when\u003cspan pulumi-lang-nodejs=\" allFuturePermissions \" pulumi-lang-dotnet=\" AllFuturePermissions \" pulumi-lang-go=\" allFuturePermissions \" pulumi-lang-python=\" all_future_permissions \" pulumi-lang-yaml=\" allFuturePermissions \" pulumi-lang-java=\" allFuturePermissions \" pulumi-lang-hcl=\" all_future_permissions \"\u003e allFuturePermissions \u003c/span\u003eis false; [] grants no permissions. Must be omitted or empty when\u003cspan pulumi-lang-nodejs=\" allFuturePermissions \" pulumi-lang-dotnet=\" AllFuturePermissions \" pulumi-lang-go=\" allFuturePermissions \" pulumi-lang-python=\" all_future_permissions \" pulumi-lang-yaml=\" allFuturePermissions \" pulumi-lang-java=\" allFuturePermissions \" pulumi-lang-hcl=\" all_future_permissions \"\u003e allFuturePermissions \u003c/span\u003eis true.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "properties": {
+        "allFuturePermissions": {
+          "description": "Grant all current and future permissions. Requires caller authority. Defaults to false.",
+          "type": "boolean"
+        },
+        "apiId": {
+          "description": "API ID used to authenticate with this key.",
+          "type": "string"
+        },
+        "apiKey": {
+          "description": "Secret returned only at creation. Preserved during refresh and updates; unavailable after import.",
+          "language": {
+            "csharp": {
+              "name": "Value"
+            }
+          },
+          "secret": true,
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Purpose of the key, up to 2000 characters. Omitted, null, or blank clears it.",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "Disable authentication with the key. Defaults to false.",
+          "type": "boolean"
+        },
+        "effectiveName": {
+          "description": "Actual display name returned by the API, including a generated name when name is omitted.",
+          "type": "string"
+        },
+        "effectivePermissions": {
+          "description": "Current grants returned by the API, including expansion of all_future_permissions.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Display name, up to 255 characters. Omitted, null, or blank uses an API-generated name based on the original creation time.",
+          "type": "string"
+        },
+        "permissions": {
+          "description": "Complete permission set. Required when\u003cspan pulumi-lang-nodejs=\" allFuturePermissions \" pulumi-lang-dotnet=\" AllFuturePermissions \" pulumi-lang-go=\" allFuturePermissions \" pulumi-lang-python=\" all_future_permissions \" pulumi-lang-yaml=\" allFuturePermissions \" pulumi-lang-java=\" allFuturePermissions \" pulumi-lang-hcl=\" all_future_permissions \"\u003e allFuturePermissions \u003c/span\u003eis false; [] grants no permissions. Must be omitted or empty when\u003cspan pulumi-lang-nodejs=\" allFuturePermissions \" pulumi-lang-dotnet=\" AllFuturePermissions \" pulumi-lang-go=\" allFuturePermissions \" pulumi-lang-python=\" all_future_permissions \" pulumi-lang-yaml=\" allFuturePermissions \" pulumi-lang-java=\" allFuturePermissions \" pulumi-lang-hcl=\" all_future_permissions \"\u003e allFuturePermissions \u003c/span\u003eis true.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "updatedAt": {
+          "description": "Last update timestamp.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "allFuturePermissions",
+        "apiId",
+        "apiKey",
+        "createdAt",
+        "disabled",
+        "effectiveName",
+        "effectivePermissions",
+        "updatedAt"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering ApiKey resources.\n",
+        "properties": {
+          "allFuturePermissions": {
+            "description": "Grant all current and future permissions. Requires caller authority. Defaults to false.",
+            "type": "boolean"
+          },
+          "apiId": {
+            "description": "API ID used to authenticate with this key.",
+            "type": "string"
+          },
+          "apiKey": {
+            "description": "Secret returned only at creation. Preserved during refresh and updates; unavailable after import.",
+            "language": {
+              "csharp": {
+                "name": "Value"
+              }
+            },
+            "secret": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "description": {
+            "description": "Purpose of the key, up to 2000 characters. Omitted, null, or blank clears it.",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Disable authentication with the key. Defaults to false.",
+            "type": "boolean"
+          },
+          "effectiveName": {
+            "description": "Actual display name returned by the API, including a generated name when name is omitted.",
+            "type": "string"
+          },
+          "effectivePermissions": {
+            "description": "Current grants returned by the API, including expansion of all_future_permissions.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "name": {
+            "description": "Display name, up to 255 characters. Omitted, null, or blank uses an API-generated name based on the original creation time.",
+            "type": "string"
+          },
+          "permissions": {
+            "description": "Complete permission set. Required when\u003cspan pulumi-lang-nodejs=\" allFuturePermissions \" pulumi-lang-dotnet=\" AllFuturePermissions \" pulumi-lang-go=\" allFuturePermissions \" pulumi-lang-python=\" all_future_permissions \" pulumi-lang-yaml=\" allFuturePermissions \" pulumi-lang-java=\" allFuturePermissions \" pulumi-lang-hcl=\" all_future_permissions \"\u003e allFuturePermissions \u003c/span\u003eis false; [] grants no permissions. Must be omitted or empty when\u003cspan pulumi-lang-nodejs=\" allFuturePermissions \" pulumi-lang-dotnet=\" AllFuturePermissions \" pulumi-lang-go=\" allFuturePermissions \" pulumi-lang-python=\" all_future_permissions \" pulumi-lang-yaml=\" allFuturePermissions \" pulumi-lang-java=\" allFuturePermissions \" pulumi-lang-hcl=\" all_future_permissions \"\u003e allFuturePermissions \u003c/span\u003eis true.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:ImageHtmlCss": {
+      "inputProperties": {
+        "colorScheme": {
+          "description": "Sets the preferred color scheme: light or dark.",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS used to style the rendered HTML.",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "type": "boolean"
+        },
+        "format": {
+          "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+          "type": "string"
+        },
+        "googleFonts": {
+          "description": "Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "html": {
+          "description": "HTML to render and take a screenshot of. HTML fragments are rendered in a wrapper document unless a complete HTML document is supplied. Required for HTML image requests.",
+          "type": "string"
+        },
+        "jumboMaxHeight": {
+          "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "jumboMaxWidth": {
+          "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "maxRenderOnce": {
+          "description": "Ensure the image is only ever rendered and saved one time. This is an advanced option not applicable to most requests.",
+          "type": "boolean"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "CSS media type to emulate: screen or print.",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom key-value metadata stored with the image.",
+          "type": "object"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+          "type": "integer"
+        },
+        "pdfOptions": {
+          "$ref": "#/types/html-css-to-image:index/ImageHtmlCssPdfOptions:ImageHtmlCssPdfOptions",
+          "description": "Rendering option."
+        },
+        "proxyId": {
+          "description": "Specifies which configured organization proxy to use when rendering.",
+          "type": "string"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+          "type": "boolean"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+          "type": "string"
+        },
+        "storageDestinationId": {
+          "description": "Specifies which configured organization storage destination receives the rendered image.",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.",
+          "type": "boolean"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        }
+      },
+      "properties": {
+        "colorScheme": {
+          "description": "Sets the preferred color scheme: light or dark.",
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS used to style the rendered HTML.",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "type": "boolean"
+        },
+        "format": {
+          "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+          "type": "string"
+        },
+        "googleFonts": {
+          "description": "Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "html": {
+          "description": "HTML to render and take a screenshot of. HTML fragments are rendered in a wrapper document unless a complete HTML document is supplied. Required for HTML image requests.",
+          "type": "string"
+        },
+        "imageUrl": {
+          "description": "Rendering operation URL. Creation does not render bytes.",
+          "type": "string"
+        },
+        "jumboMaxHeight": {
+          "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "jumboMaxWidth": {
+          "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "lastRenderStoredAt": {
+          "description": "Last HCTI stored-render timestamp, when available.",
+          "type": "string"
+        },
+        "maxRenderOnce": {
+          "description": "Ensure the image is only ever rendered and saved one time. This is an advanced option not applicable to most requests.",
+          "type": "boolean"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "CSS media type to emulate: screen or print.",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom key-value metadata stored with the image.",
+          "type": "object"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+          "type": "integer"
+        },
+        "ogConfigContentVersion": {
+          "description": "Associated OG content version, if any. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        },
+        "ogConfigId": {
+          "description": "Associated OG configuration ID, if any.",
+          "type": "string"
+        },
+        "pdfOptions": {
+          "$ref": "#/types/html-css-to-image:index/ImageHtmlCssPdfOptions:ImageHtmlCssPdfOptions",
+          "description": "Rendering option."
+        },
+        "proxyId": {
+          "description": "Specifies which configured organization proxy to use when rendering.",
+          "type": "string"
+        },
+        "publicUrl": {
+          "description": "Public GET rendering URL, or null when HCTI storage is disabled.",
+          "type": "string"
+        },
+        "renderMethod": {
+          "description": "HTTP method required to render: GET or PUT.",
+          "type": "string"
+        },
+        "renderRequiresAuth": {
+          "description": "Whether rendering requires API authentication.",
+          "type": "boolean"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+          "type": "boolean"
+        },
+        "savedToStorageDestinationAt": {
+          "description": "Last base-image save to custom storage, when available.",
+          "type": "string"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+          "type": "string"
+        },
+        "storageDestinationHctiStorageDisabled": {
+          "description": "Whether rendered output is saved only to custom storage, recorded when the image was created.",
+          "type": "boolean"
+        },
+        "storageDestinationId": {
+          "description": "Specifies which configured organization storage destination receives the rendered image.",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.",
+          "type": "boolean"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "createdAt",
+        "html",
+        "imageUrl",
+        "lastRenderStoredAt",
+        "ogConfigContentVersion",
+        "ogConfigId",
+        "publicUrl",
+        "renderMethod",
+        "renderRequiresAuth",
+        "savedToStorageDestinationAt",
+        "storageDestinationHctiStorageDisabled"
+      ],
+      "requiredInputs": [
+        "html"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering ImageHtmlCss resources.\n",
+        "properties": {
+          "colorScheme": {
+            "description": "Sets the preferred color scheme: light or dark.",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "css": {
+            "description": "CSS used to style the rendered HTML.",
+            "type": "string"
+          },
+          "deviceScale": {
+            "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+            "type": "number"
+          },
+          "disableTwemoji": {
+            "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+            "type": "boolean"
+          },
+          "format": {
+            "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+            "type": "string"
+          },
+          "googleFonts": {
+            "description": "Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "html": {
+            "description": "HTML to render and take a screenshot of. HTML fragments are rendered in a wrapper document unless a complete HTML document is supplied. Required for HTML image requests.",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "Rendering operation URL. Creation does not render bytes.",
+            "type": "string"
+          },
+          "jumboMaxHeight": {
+            "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+            "type": "integer"
+          },
+          "jumboMaxWidth": {
+            "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+            "type": "integer"
+          },
+          "lastRenderStoredAt": {
+            "description": "Last HCTI stored-render timestamp, when available.",
+            "type": "string"
+          },
+          "maxRenderOnce": {
+            "description": "Ensure the image is only ever rendered and saved one time. This is an advanced option not applicable to most requests.",
+            "type": "boolean"
+          },
+          "maxWaitMs": {
+            "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+            "type": "integer"
+          },
+          "mediaType": {
+            "description": "CSS media type to emulate: screen or print.",
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Custom key-value metadata stored with the image.",
+            "type": "object"
+          },
+          "msDelay": {
+            "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+            "type": "integer"
+          },
+          "ogConfigContentVersion": {
+            "description": "Associated OG content version, if any. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          },
+          "ogConfigId": {
+            "description": "Associated OG configuration ID, if any.",
+            "type": "string"
+          },
+          "pdfOptions": {
+            "$ref": "#/types/html-css-to-image:index/ImageHtmlCssPdfOptions:ImageHtmlCssPdfOptions",
+            "description": "Rendering option."
+          },
+          "proxyId": {
+            "description": "Specifies which configured organization proxy to use when rendering.",
+            "type": "string"
+          },
+          "publicUrl": {
+            "description": "Public GET rendering URL, or null when HCTI storage is disabled.",
+            "type": "string"
+          },
+          "renderMethod": {
+            "description": "HTTP method required to render: GET or PUT.",
+            "type": "string"
+          },
+          "renderRequiresAuth": {
+            "description": "Whether rendering requires API authentication.",
+            "type": "boolean"
+          },
+          "renderWhenReady": {
+            "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+            "type": "boolean"
+          },
+          "savedToStorageDestinationAt": {
+            "description": "Last base-image save to custom storage, when available.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+            "type": "string"
+          },
+          "storageDestinationHctiStorageDisabled": {
+            "description": "Whether rendered output is saved only to custom storage, recorded when the image was created.",
+            "type": "boolean"
+          },
+          "storageDestinationId": {
+            "description": "Specifies which configured organization storage destination receives the rendered image.",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+            "type": "string"
+          },
+          "transparentBackground": {
+            "description": "Specifies whether the image is rendered with a transparent background.",
+            "type": "boolean"
+          },
+          "viewportHeight": {
+            "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+            "type": "integer"
+          },
+          "viewportLandscape": {
+            "description": "Specifies whether the emulated viewport is in landscape orientation.",
+            "type": "boolean"
+          },
+          "viewportMobile": {
+            "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+            "type": "boolean"
+          },
+          "viewportTouch": {
+            "description": "Specifies whether the emulated viewport supports touch events.",
+            "type": "boolean"
+          },
+          "viewportWidth": {
+            "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:ImageTemplated": {
+      "inputProperties": {
+        "format": {
+          "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+          "type": "string"
+        },
+        "templateId": {
+          "description": "Template ID including the t- prefix.",
+          "type": "string"
+        },
+        "templateValues": {
+          "description": "Values substituted into the template for this render. Must be a non-empty JSON object. Include the values needed by the template.",
+          "secret": true,
+          "type": "string"
+        },
+        "templateVersion": {
+          "description": "Optional version to pin. Omission selects the latest version when creating the image. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "format": {
+          "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+          "type": "string"
+        },
+        "imageUrl": {
+          "description": "Rendering operation URL. Creation does not render bytes.",
+          "type": "string"
+        },
+        "lastRenderStoredAt": {
+          "description": "Last HCTI stored-render timestamp, when available.",
+          "type": "string"
+        },
+        "ogConfigContentVersion": {
+          "description": "Associated OG content version, if any. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        },
+        "ogConfigId": {
+          "description": "Associated OG configuration ID, if any.",
+          "type": "string"
+        },
+        "publicUrl": {
+          "description": "Public GET rendering URL, or null when HCTI storage is disabled.",
+          "type": "string"
+        },
+        "renderMethod": {
+          "description": "HTTP method required to render: GET or PUT.",
+          "type": "string"
+        },
+        "renderRequiresAuth": {
+          "description": "Whether rendering requires API authentication.",
+          "type": "boolean"
+        },
+        "resolvedTemplateVersion": {
+          "description": "Actual template version used at creation; does not pin an omitted template_version. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        },
+        "savedToStorageDestinationAt": {
+          "description": "Last base-image save to custom storage, when available.",
+          "type": "string"
+        },
+        "storageDestinationHctiStorageDisabled": {
+          "description": "Whether rendered output is saved only to custom storage, recorded when the image was created.",
+          "type": "boolean"
+        },
+        "templateId": {
+          "description": "Template ID including the t- prefix.",
+          "type": "string"
+        },
+        "templateValues": {
+          "description": "Values substituted into the template for this render. Must be a non-empty JSON object. Include the values needed by the template.",
+          "secret": true,
+          "type": "string"
+        },
+        "templateVersion": {
+          "description": "Optional version to pin. Omission selects the latest version when creating the image. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "imageUrl",
+        "lastRenderStoredAt",
+        "ogConfigContentVersion",
+        "ogConfigId",
+        "publicUrl",
+        "renderMethod",
+        "renderRequiresAuth",
+        "resolvedTemplateVersion",
+        "savedToStorageDestinationAt",
+        "storageDestinationHctiStorageDisabled",
+        "templateId",
+        "templateValues"
+      ],
+      "requiredInputs": [
+        "templateId",
+        "templateValues"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering ImageTemplated resources.\n",
+        "properties": {
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "format": {
+            "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "Rendering operation URL. Creation does not render bytes.",
+            "type": "string"
+          },
+          "lastRenderStoredAt": {
+            "description": "Last HCTI stored-render timestamp, when available.",
+            "type": "string"
+          },
+          "ogConfigContentVersion": {
+            "description": "Associated OG content version, if any. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          },
+          "ogConfigId": {
+            "description": "Associated OG configuration ID, if any.",
+            "type": "string"
+          },
+          "publicUrl": {
+            "description": "Public GET rendering URL, or null when HCTI storage is disabled.",
+            "type": "string"
+          },
+          "renderMethod": {
+            "description": "HTTP method required to render: GET or PUT.",
+            "type": "string"
+          },
+          "renderRequiresAuth": {
+            "description": "Whether rendering requires API authentication.",
+            "type": "boolean"
+          },
+          "resolvedTemplateVersion": {
+            "description": "Actual template version used at creation; does not pin an omitted template_version. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          },
+          "savedToStorageDestinationAt": {
+            "description": "Last base-image save to custom storage, when available.",
+            "type": "string"
+          },
+          "storageDestinationHctiStorageDisabled": {
+            "description": "Whether rendered output is saved only to custom storage, recorded when the image was created.",
+            "type": "boolean"
+          },
+          "templateId": {
+            "description": "Template ID including the t- prefix.",
+            "type": "string"
+          },
+          "templateValues": {
+            "description": "Values substituted into the template for this render. Must be a non-empty JSON object. Include the values needed by the template.",
+            "secret": true,
+            "type": "string"
+          },
+          "templateVersion": {
+            "description": "Optional version to pin. Omission selects the latest version when creating the image. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:ImageUrl": {
+      "inputProperties": {
+        "additionalHeaderOrigins": {
+          "description": "Additional exact HTTP or HTTPS origins allowed to receive custom headers. Supports up to 20 unique origins of up to 512 UTF-8 bytes each. Origins must use the format scheme://host[:port] without a path; duplicates are ignored. For GET and form-encoded requests, repeat this parameter for each origin.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "blockConsentBanners": {
+          "description": "Attempt to block cookie/consent banners from displaying.",
+          "type": "boolean"
+        },
+        "colorScheme": {
+          "description": "Sets the preferred color scheme: light or dark.",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS injected into the loaded URL to override styles on the page.",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "type": "boolean"
+        },
+        "format": {
+          "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+          "type": "string"
+        },
+        "fullScreen": {
+          "description": "Take a screenshot of the entire screen after scrolling down and back to the top.",
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP headers to include on top-level page navigations to the requested URL's origin and any additional_header_origins. Supports up to 20 headers with names up to 512 ASCII characters and values up to 8192 UTF-8 bytes. For GET and form-encoded requests, repeat this parameter using the format `headers=name:value`.",
+          "secret": true,
+          "type": "object"
+        },
+        "identifyAsHcti": {
+          "description": "Identify the top-level page navigation as an HCTI screenshot request using the X-HCTI-SCREENSHOT header.",
+          "type": "boolean"
+        },
+        "includeHeadersOnSubrequests": {
+          "description": "Include custom headers on subrequests to the requested URL's origin and any additional_header_origins. Defaults to false. Requires at least one header.",
+          "type": "boolean"
+        },
+        "jumboMaxHeight": {
+          "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "jumboMaxWidth": {
+          "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "maxRenderOnce": {
+          "description": "Ensure the image is only ever rendered and saved one time. This is an advanced option not applicable to most requests.",
+          "type": "boolean"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "CSS media type to emulate: screen or print.",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom key-value metadata stored with the image.",
+          "type": "object"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+          "type": "integer"
+        },
+        "pdfOptions": {
+          "$ref": "#/types/html-css-to-image:index/ImageUrlPdfOptions:ImageUrlPdfOptions",
+          "description": "Rendering option."
+        },
+        "proxyId": {
+          "description": "Specifies which configured organization proxy to use when rendering.",
+          "type": "string"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+          "type": "boolean"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+          "type": "string"
+        },
+        "storageDestinationId": {
+          "description": "Specifies which configured organization storage destination receives the rendered image.",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.",
+          "type": "boolean"
+        },
+        "url": {
+          "description": "Public HTTP or HTTPS URL to capture. Required for URL image requests.",
+          "type": "string"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        }
+      },
+      "properties": {
+        "additionalHeaderOrigins": {
+          "description": "Additional exact HTTP or HTTPS origins allowed to receive custom headers. Supports up to 20 unique origins of up to 512 UTF-8 bytes each. Origins must use the format scheme://host[:port] without a path; duplicates are ignored. For GET and form-encoded requests, repeat this parameter for each origin.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "blockConsentBanners": {
+          "description": "Attempt to block cookie/consent banners from displaying.",
+          "type": "boolean"
+        },
+        "colorScheme": {
+          "description": "Sets the preferred color scheme: light or dark.",
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS injected into the loaded URL to override styles on the page.",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "type": "boolean"
+        },
+        "format": {
+          "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+          "type": "string"
+        },
+        "fullScreen": {
+          "description": "Take a screenshot of the entire screen after scrolling down and back to the top.",
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP headers to include on top-level page navigations to the requested URL's origin and any additional_header_origins. Supports up to 20 headers with names up to 512 ASCII characters and values up to 8192 UTF-8 bytes. For GET and form-encoded requests, repeat this parameter using the format `headers=name:value`.",
+          "secret": true,
+          "type": "object"
+        },
+        "identifyAsHcti": {
+          "description": "Identify the top-level page navigation as an HCTI screenshot request using the X-HCTI-SCREENSHOT header.",
+          "type": "boolean"
+        },
+        "imageUrl": {
+          "description": "Rendering operation URL. Creation does not render bytes.",
+          "language": {
+            "csharp": {
+              "name": "RenderingUrl"
+            }
+          },
+          "type": "string"
+        },
+        "includeHeadersOnSubrequests": {
+          "description": "Include custom headers on subrequests to the requested URL's origin and any additional_header_origins. Defaults to false. Requires at least one header.",
+          "type": "boolean"
+        },
+        "jumboMaxHeight": {
+          "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "jumboMaxWidth": {
+          "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "lastRenderStoredAt": {
+          "description": "Last HCTI stored-render timestamp, when available.",
+          "type": "string"
+        },
+        "maxRenderOnce": {
+          "description": "Ensure the image is only ever rendered and saved one time. This is an advanced option not applicable to most requests.",
+          "type": "boolean"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "CSS media type to emulate: screen or print.",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom key-value metadata stored with the image.",
+          "type": "object"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+          "type": "integer"
+        },
+        "ogConfigContentVersion": {
+          "description": "Associated OG content version, if any. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        },
+        "ogConfigId": {
+          "description": "Associated OG configuration ID, if any.",
+          "type": "string"
+        },
+        "pdfOptions": {
+          "$ref": "#/types/html-css-to-image:index/ImageUrlPdfOptions:ImageUrlPdfOptions",
+          "description": "Rendering option."
+        },
+        "proxyId": {
+          "description": "Specifies which configured organization proxy to use when rendering.",
+          "type": "string"
+        },
+        "publicUrl": {
+          "description": "Public GET rendering URL, or null when HCTI storage is disabled.",
+          "type": "string"
+        },
+        "renderMethod": {
+          "description": "HTTP method required to render: GET or PUT.",
+          "type": "string"
+        },
+        "renderRequiresAuth": {
+          "description": "Whether rendering requires API authentication.",
+          "type": "boolean"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+          "type": "boolean"
+        },
+        "savedToStorageDestinationAt": {
+          "description": "Last base-image save to custom storage, when available.",
+          "type": "string"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+          "type": "string"
+        },
+        "storageDestinationHctiStorageDisabled": {
+          "description": "Whether rendered output is saved only to custom storage, recorded when the image was created.",
+          "type": "boolean"
+        },
+        "storageDestinationId": {
+          "description": "Specifies which configured organization storage destination receives the rendered image.",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.",
+          "type": "boolean"
+        },
+        "url": {
+          "description": "Public HTTP or HTTPS URL to capture. Required for URL image requests.",
+          "type": "string"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "createdAt",
+        "imageUrl",
+        "lastRenderStoredAt",
+        "ogConfigContentVersion",
+        "ogConfigId",
+        "publicUrl",
+        "renderMethod",
+        "renderRequiresAuth",
+        "savedToStorageDestinationAt",
+        "storageDestinationHctiStorageDisabled",
+        "url"
+      ],
+      "requiredInputs": [
+        "url"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering ImageUrl resources.\n",
+        "properties": {
+          "additionalHeaderOrigins": {
+            "description": "Additional exact HTTP or HTTPS origins allowed to receive custom headers. Supports up to 20 unique origins of up to 512 UTF-8 bytes each. Origins must use the format scheme://host[:port] without a path; duplicates are ignored. For GET and form-encoded requests, repeat this parameter for each origin.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "blockConsentBanners": {
+            "description": "Attempt to block cookie/consent banners from displaying.",
+            "type": "boolean"
+          },
+          "colorScheme": {
+            "description": "Sets the preferred color scheme: light or dark.",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "css": {
+            "description": "CSS injected into the loaded URL to override styles on the page.",
+            "type": "string"
+          },
+          "deviceScale": {
+            "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+            "type": "number"
+          },
+          "disableTwemoji": {
+            "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+            "type": "boolean"
+          },
+          "format": {
+            "description": "Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.",
+            "type": "string"
+          },
+          "fullScreen": {
+            "description": "Take a screenshot of the entire screen after scrolling down and back to the top.",
+            "type": "boolean"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "HTTP headers to include on top-level page navigations to the requested URL's origin and any additional_header_origins. Supports up to 20 headers with names up to 512 ASCII characters and values up to 8192 UTF-8 bytes. For GET and form-encoded requests, repeat this parameter using the format `headers=name:value`.",
+            "secret": true,
+            "type": "object"
+          },
+          "identifyAsHcti": {
+            "description": "Identify the top-level page navigation as an HCTI screenshot request using the X-HCTI-SCREENSHOT header.",
+            "type": "boolean"
+          },
+          "imageUrl": {
+            "description": "Rendering operation URL. Creation does not render bytes.",
+            "language": {
+              "csharp": {
+                "name": "RenderingUrl"
+              }
+            },
+            "type": "string"
+          },
+          "includeHeadersOnSubrequests": {
+            "description": "Include custom headers on subrequests to the requested URL's origin and any additional_header_origins. Defaults to false. Requires at least one header.",
+            "type": "boolean"
+          },
+          "jumboMaxHeight": {
+            "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+            "type": "integer"
+          },
+          "jumboMaxWidth": {
+            "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+            "type": "integer"
+          },
+          "lastRenderStoredAt": {
+            "description": "Last HCTI stored-render timestamp, when available.",
+            "type": "string"
+          },
+          "maxRenderOnce": {
+            "description": "Ensure the image is only ever rendered and saved one time. This is an advanced option not applicable to most requests.",
+            "type": "boolean"
+          },
+          "maxWaitMs": {
+            "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+            "type": "integer"
+          },
+          "mediaType": {
+            "description": "CSS media type to emulate: screen or print.",
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Custom key-value metadata stored with the image.",
+            "type": "object"
+          },
+          "msDelay": {
+            "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+            "type": "integer"
+          },
+          "ogConfigContentVersion": {
+            "description": "Associated OG content version, if any. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          },
+          "ogConfigId": {
+            "description": "Associated OG configuration ID, if any.",
+            "type": "string"
+          },
+          "pdfOptions": {
+            "$ref": "#/types/html-css-to-image:index/ImageUrlPdfOptions:ImageUrlPdfOptions",
+            "description": "Rendering option."
+          },
+          "proxyId": {
+            "description": "Specifies which configured organization proxy to use when rendering.",
+            "type": "string"
+          },
+          "publicUrl": {
+            "description": "Public GET rendering URL, or null when HCTI storage is disabled.",
+            "type": "string"
+          },
+          "renderMethod": {
+            "description": "HTTP method required to render: GET or PUT.",
+            "type": "string"
+          },
+          "renderRequiresAuth": {
+            "description": "Whether rendering requires API authentication.",
+            "type": "boolean"
+          },
+          "renderWhenReady": {
+            "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+            "type": "boolean"
+          },
+          "savedToStorageDestinationAt": {
+            "description": "Last base-image save to custom storage, when available.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+            "type": "string"
+          },
+          "storageDestinationHctiStorageDisabled": {
+            "description": "Whether rendered output is saved only to custom storage, recorded when the image was created.",
+            "type": "boolean"
+          },
+          "storageDestinationId": {
+            "description": "Specifies which configured organization storage destination receives the rendered image.",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+            "type": "string"
+          },
+          "transparentBackground": {
+            "description": "Specifies whether the image is rendered with a transparent background.",
+            "type": "boolean"
+          },
+          "url": {
+            "description": "Public HTTP or HTTPS URL to capture. Required for URL image requests.",
+            "type": "string"
+          },
+          "viewportHeight": {
+            "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+            "type": "integer"
+          },
+          "viewportLandscape": {
+            "description": "Specifies whether the emulated viewport is in landscape orientation.",
+            "type": "boolean"
+          },
+          "viewportMobile": {
+            "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+            "type": "boolean"
+          },
+          "viewportTouch": {
+            "description": "Specifies whether the emulated viewport supports touch events.",
+            "type": "boolean"
+          },
+          "viewportWidth": {
+            "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:OgConfig": {
+      "inputProperties": {
+        "additionalHeaderOrigins": {
+          "description": "Templated only. Up to 20 additional exact HTTP(S) origins allowed to receive headers, each up to 512 UTF-8 bytes. Omission clears them.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "baseUrl": {
+          "description": "HTTPS origin of the source website, up to 2048 characters, without a path, credentials, query, or fragment.",
+          "type": "string"
+        },
+        "configType": {
+          "description": "Rendering source: html_css or templated. Changing type updates this configuration in place.",
+          "type": "string"
+        },
+        "defaultOptions": {
+          "$ref": "#/types/html-css-to-image:index/OgConfigDefaultOptions:OgConfigDefaultOptions",
+          "description": "HTML/CSS only. Default page rendering options. Unspecified fields are sent as null; the API owns render defaults."
+        },
+        "description": {
+          "description": "Optional description, up to 1023 characters. Omission clears it.",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "Disable serving images. Defaults to false.",
+          "type": "boolean"
+        },
+        "extractValues": {
+          "description": "HTML/CSS only. Extract image options from page metadata, overriding default_options. Omission uses false.",
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Templated only. HTTP extraction headers, up to 20. Names: 512 ASCII characters; values: 8192 UTF-8 bytes. Omission clears them.",
+          "secret": true,
+          "type": "object"
+        },
+        "name": {
+          "description": "Display name, 1–255 characters after trimming.",
+          "type": "string"
+        },
+        "optimizationMode": {
+          "description": "no_optimization keeps dimensions; post_process adapts after rendering; set_viewport renders at social-platform viewport sizes. Omission lets the API choose its default (currently post_process).",
+          "type": "string"
+        },
+        "refreshIntervalS": {
+          "description": "Seconds before cached images may refresh: 1800–31536000, subject to the plan minimum. Omission lets the API choose its default (currently 86400).",
+          "type": "integer"
+        },
+        "templateId": {
+          "description": "Required for templated configurations. Template ID including its t- prefix.",
+          "type": "string"
+        },
+        "templateValuesMappings": {
+          "description": "Templated only. Up to 32 ordered mappings from page metadata to distinct template fields.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/OgConfigTemplateValuesMapping:OgConfigTemplateValuesMapping"
+          },
+          "type": "array"
+        },
+        "templateVersion": {
+          "description": "Templated only. Positive int64 version. Omission follows the latest version at serving time. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "additionalHeaderOrigins": {
+          "description": "Templated only. Up to 20 additional exact HTTP(S) origins allowed to receive headers, each up to 512 UTF-8 bytes. Omission clears them.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "baseUrl": {
+          "description": "HTTPS origin of the source website, up to 2048 characters, without a path, credentials, query, or fragment.",
+          "type": "string"
+        },
+        "configType": {
+          "description": "Rendering source: html_css or templated. Changing type updates this configuration in place.",
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "defaultOptions": {
+          "$ref": "#/types/html-css-to-image:index/OgConfigDefaultOptions:OgConfigDefaultOptions",
+          "description": "HTML/CSS only. Default page rendering options. Unspecified fields are sent as null; the API owns render defaults."
+        },
+        "description": {
+          "description": "Optional description, up to 1023 characters. Omission clears it.",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "Disable serving images. Defaults to false.",
+          "type": "boolean"
+        },
+        "domainId": {
+          "description": "Serving identifier used in OG image URLs. Distinct from the management ID.",
+          "type": "string"
+        },
+        "effectiveOptimizationMode": {
+          "description": "Optimization mode returned by the API.",
+          "type": "string"
+        },
+        "effectiveRefreshIntervalS": {
+          "description": "Refresh interval returned by the API, in seconds.",
+          "type": "integer"
+        },
+        "extractValues": {
+          "description": "HTML/CSS only. Extract image options from page metadata, overriding default_options. Omission uses false.",
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Templated only. HTTP extraction headers, up to 20. Names: 512 ASCII characters; values: 8192 UTF-8 bytes. Omission clears them.",
+          "secret": true,
+          "type": "object"
+        },
+        "name": {
+          "description": "Display name, 1–255 characters after trimming.",
+          "type": "string"
+        },
+        "optimizationMode": {
+          "description": "no_optimization keeps dimensions; post_process adapts after rendering; set_viewport renders at social-platform viewport sizes. Omission lets the API choose its default (currently post_process).",
+          "type": "string"
+        },
+        "refreshIntervalS": {
+          "description": "Seconds before cached images may refresh: 1800–31536000, subject to the plan minimum. Omission lets the API choose its default (currently 86400).",
+          "type": "integer"
+        },
+        "templateId": {
+          "description": "Required for templated configurations. Template ID including its t- prefix.",
+          "type": "string"
+        },
+        "templateValuesMappings": {
+          "description": "Templated only. Up to 32 ordered mappings from page metadata to distinct template fields.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/OgConfigTemplateValuesMapping:OgConfigTemplateValuesMapping"
+          },
+          "type": "array"
+        },
+        "templateVersion": {
+          "description": "Templated only. Positive int64 version. Omission follows the latest version at serving time. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "Last update timestamp.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "baseUrl",
+        "configType",
+        "createdAt",
+        "disabled",
+        "domainId",
+        "effectiveOptimizationMode",
+        "effectiveRefreshIntervalS",
+        "name",
+        "updatedAt"
+      ],
+      "requiredInputs": [
+        "baseUrl",
+        "configType",
+        "name"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering OgConfig resources.\n",
+        "properties": {
+          "additionalHeaderOrigins": {
+            "description": "Templated only. Up to 20 additional exact HTTP(S) origins allowed to receive headers, each up to 512 UTF-8 bytes. Omission clears them.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "baseUrl": {
+            "description": "HTTPS origin of the source website, up to 2048 characters, without a path, credentials, query, or fragment.",
+            "type": "string"
+          },
+          "configType": {
+            "description": "Rendering source: html_css or templated. Changing type updates this configuration in place.",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "defaultOptions": {
+            "$ref": "#/types/html-css-to-image:index/OgConfigDefaultOptions:OgConfigDefaultOptions",
+            "description": "HTML/CSS only. Default page rendering options. Unspecified fields are sent as null; the API owns render defaults."
+          },
+          "description": {
+            "description": "Optional description, up to 1023 characters. Omission clears it.",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Disable serving images. Defaults to false.",
+            "type": "boolean"
+          },
+          "domainId": {
+            "description": "Serving identifier used in OG image URLs. Distinct from the management ID.",
+            "type": "string"
+          },
+          "effectiveOptimizationMode": {
+            "description": "Optimization mode returned by the API.",
+            "type": "string"
+          },
+          "effectiveRefreshIntervalS": {
+            "description": "Refresh interval returned by the API, in seconds.",
+            "type": "integer"
+          },
+          "extractValues": {
+            "description": "HTML/CSS only. Extract image options from page metadata, overriding default_options. Omission uses false.",
+            "type": "boolean"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Templated only. HTTP extraction headers, up to 20. Names: 512 ASCII characters; values: 8192 UTF-8 bytes. Omission clears them.",
+            "secret": true,
+            "type": "object"
+          },
+          "name": {
+            "description": "Display name, 1–255 characters after trimming.",
+            "type": "string"
+          },
+          "optimizationMode": {
+            "description": "no_optimization keeps dimensions; post_process adapts after rendering; set_viewport renders at social-platform viewport sizes. Omission lets the API choose its default (currently post_process).",
+            "type": "string"
+          },
+          "refreshIntervalS": {
+            "description": "Seconds before cached images may refresh: 1800–31536000, subject to the plan minimum. Omission lets the API choose its default (currently 86400).",
+            "type": "integer"
+          },
+          "templateId": {
+            "description": "Required for templated configurations. Template ID including its t- prefix.",
+            "type": "string"
+          },
+          "templateValuesMappings": {
+            "description": "Templated only. Up to 32 ordered mappings from page metadata to distinct template fields.",
+            "items": {
+              "$ref": "#/types/html-css-to-image:index/OgConfigTemplateValuesMapping:OgConfigTemplateValuesMapping"
+            },
+            "type": "array"
+          },
+          "templateVersion": {
+            "description": "Templated only. Positive int64 version. Omission follows the latest version at serving time. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:Proxy": {
+      "inputProperties": {
+        "authentication": {
+          "$ref": "#/types/html-css-to-image:index/ProxyAuthentication:ProxyAuthentication",
+          "description": "Proxy credentials. Omit the whole object to remove authentication."
+        },
+        "bypassHosts": {
+          "description": "Up to 100 hostnames or URLs to bypass. Host comparison ignores case, URL paths, duplicates, and surrounding whitespace. Omission clears the list.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "disabled": {
+          "description": "Disable the proxy. Defaults to false.",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "Display name, 3–500 characters after trimming.",
+          "type": "string"
+        },
+        "port": {
+          "description": "Port from 1 to 65535. Omitted sends null; the API chooses the scheme default.",
+          "type": "integer"
+        },
+        "url": {
+          "description": "HTTP(S) proxy origin without credentials, port, query, fragment, or a non-root path.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "authentication": {
+          "$ref": "#/types/html-css-to-image:index/ProxyAuthentication:ProxyAuthentication",
+          "description": "Proxy credentials. Omit the whole object to remove authentication."
+        },
+        "bypassHosts": {
+          "description": "Up to 100 hostnames or URLs to bypass. Host comparison ignores case, URL paths, duplicates, and surrounding whitespace. Omission clears the list.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "Disable the proxy. Defaults to false.",
+          "type": "boolean"
+        },
+        "effectivePort": {
+          "description": "Port returned by the API.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Display name, 3–500 characters after trimming.",
+          "type": "string"
+        },
+        "port": {
+          "description": "Port from 1 to 65535. Omitted sends null; the API chooses the scheme default.",
+          "type": "integer"
+        },
+        "updatedAt": {
+          "description": "Last update timestamp.",
+          "type": "string"
+        },
+        "url": {
+          "description": "HTTP(S) proxy origin without credentials, port, query, fragment, or a non-root path.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "disabled",
+        "effectivePort",
+        "name",
+        "updatedAt",
+        "url"
+      ],
+      "requiredInputs": [
+        "name",
+        "url"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering Proxy resources.\n",
+        "properties": {
+          "authentication": {
+            "$ref": "#/types/html-css-to-image:index/ProxyAuthentication:ProxyAuthentication",
+            "description": "Proxy credentials. Omit the whole object to remove authentication."
+          },
+          "bypassHosts": {
+            "description": "Up to 100 hostnames or URLs to bypass. Host comparison ignores case, URL paths, duplicates, and surrounding whitespace. Omission clears the list.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Disable the proxy. Defaults to false.",
+            "type": "boolean"
+          },
+          "effectivePort": {
+            "description": "Port returned by the API.",
+            "type": "integer"
+          },
+          "name": {
+            "description": "Display name, 3–500 characters after trimming.",
+            "type": "string"
+          },
+          "port": {
+            "description": "Port from 1 to 65535. Omitted sends null; the API chooses the scheme default.",
+            "type": "integer"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp.",
+            "type": "string"
+          },
+          "url": {
+            "description": "HTTP(S) proxy origin without credentials, port, query, fragment, or a non-root path.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:StorageDestination": {
+      "inputProperties": {
+        "connectionInfo": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfo:StorageDestinationConnectionInfo",
+          "description": "Set exactly one provider object: aws_s3, cloudflare_r2, backblaze_b2, digitalocean_spaces, wasabi, google_cloud_storage, or other_s3_compatible. Switching objects updates in place."
+        },
+        "disabled": {
+          "description": "Disable this destination for new renders. Defaults to false.",
+          "type": "boolean"
+        },
+        "hctiStorageDisabled": {
+          "description": "Store output only at this destination. Defaults to false. True requires authenticated /store rendering and supplies no public HCTI CDN URL.",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "Display name, 3–255 characters after trimming.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "connectionInfo": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfo:StorageDestinationConnectionInfo",
+          "description": "Set exactly one provider object: aws_s3, cloudflare_r2, backblaze_b2, digitalocean_spaces, wasabi, google_cloud_storage, or other_s3_compatible. Switching objects updates in place."
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "Disable this destination for new renders. Defaults to false.",
+          "type": "boolean"
+        },
+        "hctiStorageDisabled": {
+          "description": "Store output only at this destination. Defaults to false. True requires authenticated /store rendering and supplies no public HCTI CDN URL.",
+          "type": "boolean"
+        },
+        "lastTestError": {
+          "description": "Latest API connection test error, or null. Marked sensitive because it is external service diagnostic text.",
+          "secret": true,
+          "type": "string"
+        },
+        "lastTestSucceeded": {
+          "description": "Latest API connection test result, or null.",
+          "type": "boolean"
+        },
+        "lastTestedAt": {
+          "description": "Timestamp of the latest API connection test, or null. Refresh does not run tests.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Display name, 3–255 characters after trimming.",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "Last update timestamp.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "connectionInfo",
+        "createdAt",
+        "disabled",
+        "hctiStorageDisabled",
+        "lastTestError",
+        "lastTestSucceeded",
+        "lastTestedAt",
+        "name",
+        "updatedAt"
+      ],
+      "requiredInputs": [
+        "connectionInfo",
+        "name"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering StorageDestination resources.\n",
+        "properties": {
+          "connectionInfo": {
+            "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfo:StorageDestinationConnectionInfo",
+            "description": "Set exactly one provider object: aws_s3, cloudflare_r2, backblaze_b2, digitalocean_spaces, wasabi, google_cloud_storage, or other_s3_compatible. Switching objects updates in place."
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Disable this destination for new renders. Defaults to false.",
+            "type": "boolean"
+          },
+          "hctiStorageDisabled": {
+            "description": "Store output only at this destination. Defaults to false. True requires authenticated /store rendering and supplies no public HCTI CDN URL.",
+            "type": "boolean"
+          },
+          "lastTestError": {
+            "description": "Latest API connection test error, or null. Marked sensitive because it is external service diagnostic text.",
+            "secret": true,
+            "type": "string"
+          },
+          "lastTestSucceeded": {
+            "description": "Latest API connection test result, or null.",
+            "type": "boolean"
+          },
+          "lastTestedAt": {
+            "description": "Timestamp of the latest API connection test, or null. Refresh does not run tests.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Display name, 3–255 characters after trimming.",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "html-css-to-image:index:Template": {
+      "inputProperties": {
+        "colorScheme": {
+          "description": "Sets the preferred color scheme: light or dark.",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS used to style images rendered from the template. Handlebars expressions are not supported in CSS; put dynamic CSS in the HTML instead.",
+          "type": "string"
+        },
+        "description": {
+          "description": "An optional description of the template for your reference. Maximum: 1024 characters.",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "type": "boolean"
+        },
+        "googleFonts": {
+          "description": "Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "html": {
+          "description": "HTML to render for the template. Use Handlebars placeholders for values that will be substituted when an image is rendered. Must be non-empty, contain at least one Handlebars placeholder, and compile as valid Handlebars.",
+          "type": "string"
+        },
+        "jumboMaxHeight": {
+          "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "jumboMaxWidth": {
+          "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "CSS media type to emulate: screen or print.",
+          "type": "string"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The name of the template, used to identify it in your account. Maximum: 64 characters.",
+          "type": "string"
+        },
+        "proxyId": {
+          "description": "Specifies which configured organization proxy to use when rendering.",
+          "type": "string"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+          "type": "boolean"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+          "type": "string"
+        },
+        "storageDestinationId": {
+          "description": "Specifies which configured organization storage destination receives the rendered image.",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.",
+          "type": "boolean"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        }
+      },
+      "properties": {
+        "colorScheme": {
+          "description": "Sets the preferred color scheme: light or dark.",
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Creation timestamp.",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS used to style images rendered from the template. Handlebars expressions are not supported in CSS; put dynamic CSS in the HTML instead.",
+          "type": "string"
+        },
+        "description": {
+          "description": "An optional description of the template for your reference. Maximum: 1024 characters.",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "type": "boolean"
+        },
+        "googleFonts": {
+          "description": "Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "html": {
+          "description": "HTML to render for the template. Use Handlebars placeholders for values that will be substituted when an image is rendered. Must be non-empty, contain at least one Handlebars placeholder, and compile as valid Handlebars.",
+          "type": "string"
+        },
+        "jumboMaxHeight": {
+          "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "jumboMaxWidth": {
+          "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+          "type": "integer"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "CSS media type to emulate: screen or print.",
+          "type": "string"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The name of the template, used to identify it in your account. Maximum: 64 characters.",
+          "type": "string"
+        },
+        "proxyId": {
+          "description": "Specifies which configured organization proxy to use when rendering.",
+          "type": "string"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+          "type": "boolean"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+          "type": "string"
+        },
+        "storageDestinationId": {
+          "description": "Specifies which configured organization storage destination receives the rendered image.",
+          "type": "string"
+        },
+        "templateType": {
+          "description": "Template type; this resource manages html_css templates.",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.",
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "description": "Last update timestamp.",
+          "type": "string"
+        },
+        "version": {
+          "description": "Latest saved template version. Represented as a decimal string in Pulumi to preserve int64 precision.",
+          "type": "string"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "createdAt",
+        "html",
+        "templateType",
+        "updatedAt",
+        "version"
+      ],
+      "requiredInputs": [
+        "html"
+      ],
+      "stateInputs": {
+        "description": "Input properties used for looking up and filtering Template resources.\n",
+        "properties": {
+          "colorScheme": {
+            "description": "Sets the preferred color scheme: light or dark.",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "type": "string"
+          },
+          "css": {
+            "description": "CSS used to style images rendered from the template. Handlebars expressions are not supported in CSS; put dynamic CSS in the HTML instead.",
+            "type": "string"
+          },
+          "description": {
+            "description": "An optional description of the template for your reference. Maximum: 1024 characters.",
+            "type": "string"
+          },
+          "deviceScale": {
+            "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.",
+            "type": "number"
+          },
+          "disableTwemoji": {
+            "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+            "type": "boolean"
+          },
+          "googleFonts": {
+            "description": "Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "html": {
+            "description": "HTML to render for the template. Use Handlebars placeholders for values that will be substituted when an image is rendered. Must be non-empty, contain at least one Handlebars placeholder, and compile as valid Handlebars.",
+            "type": "string"
+          },
+          "jumboMaxHeight": {
+            "description": "Maximum height of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_width. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+            "type": "integer"
+          },
+          "jumboMaxWidth": {
+            "description": "Maximum width of the rendered image in jumbo mode. Jumbo rendering consumes additional renders and requires jumbo_max_height. Supply both jumbo dimensions. Each must be greater than 0 and no more than 80000; at least one must exceed 8000; total area cannot exceed 400000000 pixels.",
+            "type": "integer"
+          },
+          "maxWaitMs": {
+            "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.",
+            "type": "integer"
+          },
+          "mediaType": {
+            "description": "CSS media type to emulate: screen or print.",
+            "type": "string"
+          },
+          "msDelay": {
+            "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.",
+            "type": "integer"
+          },
+          "name": {
+            "description": "The name of the template, used to identify it in your account. Maximum: 64 characters.",
+            "type": "string"
+          },
+          "proxyId": {
+            "description": "Specifies which configured organization proxy to use when rendering.",
+            "type": "string"
+          },
+          "renderWhenReady": {
+            "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
+            "type": "boolean"
+          },
+          "selector": {
+            "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
+            "type": "string"
+          },
+          "storageDestinationId": {
+            "description": "Specifies which configured organization storage destination receives the rendered image.",
+            "type": "string"
+          },
+          "templateType": {
+            "description": "Template type; this resource manages html_css templates.",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.",
+            "type": "string"
+          },
+          "transparentBackground": {
+            "description": "Specifies whether the image is rendered with a transparent background.",
+            "type": "boolean"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp.",
+            "type": "string"
+          },
+          "version": {
+            "description": "Latest saved template version. Represented as a decimal string in Pulumi to preserve int64 precision.",
+            "type": "string"
+          },
+          "viewportHeight": {
+            "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+            "type": "integer"
+          },
+          "viewportLandscape": {
+            "description": "Specifies whether the emulated viewport is in landscape orientation.",
+            "type": "boolean"
+          },
+          "viewportMobile": {
+            "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.",
+            "type": "boolean"
+          },
+          "viewportTouch": {
+            "description": "Specifies whether the emulated viewport supports touch events.",
+            "type": "boolean"
+          },
+          "viewportWidth": {
+            "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "types": {
+    "html-css-to-image:index/ImageHtmlCssPdfOptions:ImageHtmlCssPdfOptions": {
+      "properties": {
+        "margins": {
+          "$ref": "#/types/html-css-to-image:index/ImageHtmlCssPdfOptionsMargins:ImageHtmlCssPdfOptionsMargins",
+          "description": "PDF margins. Supply all four sides with units.\n"
+        },
+        "pageHeight": {
+          "description": "Page height with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "pageWidth": {
+          "description": "Page width with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "printBackground": {
+          "description": "Print page backgrounds. Omission lets the API choose.\n",
+          "type": "boolean"
+        },
+        "scale": {
+          "description": "PDF scale from 0.1 to 2.\n",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "html-css-to-image:index/ImageHtmlCssPdfOptionsMargins:ImageHtmlCssPdfOptionsMargins": {
+      "properties": {
+        "bottom": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "left": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "right": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "top": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/ImageUrlPdfOptions:ImageUrlPdfOptions": {
+      "properties": {
+        "margins": {
+          "$ref": "#/types/html-css-to-image:index/ImageUrlPdfOptionsMargins:ImageUrlPdfOptionsMargins",
+          "description": "PDF margins. Supply all four sides with units.\n"
+        },
+        "pageHeight": {
+          "description": "Page height with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "pageWidth": {
+          "description": "Page width with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "printBackground": {
+          "description": "Print page backgrounds. Omission lets the API choose.\n",
+          "type": "boolean"
+        },
+        "scale": {
+          "description": "PDF scale from 0.1 to 2.\n",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "html-css-to-image:index/ImageUrlPdfOptionsMargins:ImageUrlPdfOptionsMargins": {
+      "properties": {
+        "bottom": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "left": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "right": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        },
+        "top": {
+          "description": "Margin with px, in, cm, mm, or pt units.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/OgConfigDefaultOptions:OgConfigDefaultOptions": {
+      "properties": {
+        "additionalHeaderOrigins": {
+          "description": "Additional exact HTTP or HTTPS origins allowed to receive custom headers. Supports up to 20 unique origins of up to 512 UTF-8 bytes each. Origins must use the format scheme://host[:port] without a path; duplicates are ignored.\n",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "blockConsentBanners": {
+          "description": "Attempt to block cookie/consent banners from displaying.\n",
+          "type": "boolean"
+        },
+        "colorScheme": {
+          "description": "Sets Chrome's preferred color scheme. Valid values: light or dark.\n",
+          "type": "string"
+        },
+        "css": {
+          "description": "CSS injected into the loaded page to override its styles.\n",
+          "type": "string"
+        },
+        "deviceScale": {
+          "description": "Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.\n",
+          "type": "number"
+        },
+        "disableTwemoji": {
+          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.\n",
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP headers to include on top-level page navigations to the requested URL's origin and any additional_header_origins. Supports up to 20 headers with names up to 512 ASCII characters and values up to 8192 UTF-8 bytes.\n",
+          "secret": true,
+          "type": "object"
+        },
+        "identifyAsHcti": {
+          "description": "Identify the top-level page navigation as an HCTI screenshot request using the X-HCTI-SCREENSHOT header.\n",
+          "type": "boolean"
+        },
+        "includeHeadersOnSubrequests": {
+          "description": "Include custom headers on subrequests to the requested URL's origin and any additional_header_origins. Defaults to false. Requires at least one header.\n",
+          "type": "boolean"
+        },
+        "maxWaitMs": {
+          "description": "Sets a limit on how long to wait before taking the screenshot when the page continues loading irrelevant content. Minimum: 500. Maximum: 10000 and subject to the account plan limit.\n",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "Sets the CSS media type used while rendering the page. Valid values: print or screen.\n",
+          "type": "string"
+        },
+        "msDelay": {
+          "description": "Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.\n",
+          "type": "integer"
+        },
+        "proxyId": {
+          "description": "Configured proxy ID. Must refer to an enabled proxy.\n",
+          "type": "string"
+        },
+        "renderWhenReady": {
+          "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.\n",
+          "type": "boolean"
+        },
+        "selector": {
+          "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.\n",
+          "type": "string"
+        },
+        "storageDestinationId": {
+          "description": "Configured storage destination ID. Must be enabled and allow HCTI storage.\n",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier.\n",
+          "type": "string"
+        },
+        "transparentBackground": {
+          "description": "Specifies whether the image is rendered with a transparent background.\n",
+          "type": "boolean"
+        },
+        "viewportHeight": {
+          "description": "Sets the height of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.\n",
+          "type": "integer"
+        },
+        "viewportLandscape": {
+          "description": "Specifies whether the emulated viewport is in landscape orientation.\n",
+          "type": "boolean"
+        },
+        "viewportMobile": {
+          "description": "Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.\n",
+          "type": "boolean"
+        },
+        "viewportTouch": {
+          "description": "Specifies whether the emulated viewport supports touch events.\n",
+          "type": "boolean"
+        },
+        "viewportWidth": {
+          "description": "Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.\n",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "html-css-to-image:index/OgConfigTemplateValuesMapping:OgConfigTemplateValuesMapping": {
+      "properties": {
+        "fallback": {
+          "description": "Metadata fallback: titles or descriptions. This selects page metadata, not a literal value.\n",
+          "type": "string"
+        },
+        "metaKey": {
+          "description": "Source meta tag name, up to 136 characters. Supply exactly one of\u003cspan pulumi-lang-nodejs=\" metaKey \" pulumi-lang-dotnet=\" MetaKey \" pulumi-lang-go=\" metaKey \" pulumi-lang-python=\" meta_key \" pulumi-lang-yaml=\" metaKey \" pulumi-lang-java=\" metaKey \" pulumi-lang-hcl=\" meta_key \"\u003e metaKey \u003c/span\u003eor fallback.\n",
+          "type": "string"
+        },
+        "templateKey": {
+          "description": "Destination template field path, up to 128 characters. Paths must not overlap.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "templateKey"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/ProxyAuthentication:ProxyAuthentication": {
+      "properties": {
+        "password": {
+          "description": "Password, up to 484 UTF-8 bytes. Empty is valid. Required for creation or a username change; omitted on update retains the password only when the existing username matches.\n",
+          "secret": true,
+          "type": "string"
+        },
+        "username": {
+          "description": "Username, up to 512 characters. Empty is valid; whitespace is preserved.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "username"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfo:StorageDestinationConnectionInfo": {
+      "properties": {
+        "awsS3": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoAwsS3:StorageDestinationConnectionInfoAwsS3",
+          "description": "Connection settings for aws_s3. Set exactly one provider object inside connection_info.\n"
+        },
+        "backblazeB2": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoBackblazeB2:StorageDestinationConnectionInfoBackblazeB2",
+          "description": "Connection settings for backblaze_b2. Set exactly one provider object inside connection_info.\n"
+        },
+        "cloudflareR2": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoCloudflareR2:StorageDestinationConnectionInfoCloudflareR2",
+          "description": "Connection settings for cloudflare_r2. Set exactly one provider object inside connection_info.\n"
+        },
+        "digitaloceanSpaces": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoDigitaloceanSpaces:StorageDestinationConnectionInfoDigitaloceanSpaces",
+          "description": "Connection settings for digitalocean_spaces. Set exactly one provider object inside connection_info.\n"
+        },
+        "googleCloudStorage": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoGoogleCloudStorage:StorageDestinationConnectionInfoGoogleCloudStorage",
+          "description": "Connection settings for google_cloud_storage. Set exactly one provider object inside connection_info.\n"
+        },
+        "otherS3Compatible": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoOtherS3Compatible:StorageDestinationConnectionInfoOtherS3Compatible",
+          "description": "Connection settings for other_s3_compatible. Set exactly one provider object inside connection_info.\n"
+        },
+        "wasabi": {
+          "$ref": "#/types/html-css-to-image:index/StorageDestinationConnectionInfoWasabi:StorageDestinationConnectionInfoWasabi",
+          "description": "Connection settings for wasabi. Set exactly one provider object inside connection_info.\n"
+        }
+      },
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoAwsS3:StorageDestinationConnectionInfoAwsS3": {
+      "properties": {
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "region": {
+          "description": "Bucket region supported by aws_s3.\n",
+          "type": "string"
+        },
+        "roleArn": {
+          "description": "AWS only. IAM role ARN, up to 2048 characters. Configure the organization external ID in its trust policy before saving.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bucket",
+        "region",
+        "roleArn"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoBackblazeB2:StorageDestinationConnectionInfoBackblazeB2": {
+      "properties": {
+        "accessKeyId": {
+          "description": "Required except for AWS. Up to 512 characters. Google Cloud Storage requires an HMAC access ID beginning with GOOG.\n",
+          "type": "string"
+        },
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "region": {
+          "description": "Bucket region supported by backblaze_b2.\n",
+          "type": "string"
+        },
+        "secretAccessKey": {
+          "description": "Sensitive access key secret. Required on create or a change of provider/access key ID. Omit on unrelated updates to retain the existing secret. Empty is invalid. Up to 990 UTF-16 units and 996 UTF-8 bytes after trimming.\n",
+          "secret": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessKeyId",
+        "bucket",
+        "region"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoCloudflareR2:StorageDestinationConnectionInfoCloudflareR2": {
+      "properties": {
+        "accessKeyId": {
+          "description": "Required except for AWS. Up to 512 characters. Google Cloud Storage requires an HMAC access ID beginning with GOOG.\n",
+          "type": "string"
+        },
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "cloudflareAccountId": {
+          "description": "R2 only. Required 32-character hexadecimal account ID.\n",
+          "type": "string"
+        },
+        "cloudflareJurisdiction": {
+          "description": "R2 only. eu or fedramp; omit for default jurisdiction.\n",
+          "type": "string"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "secretAccessKey": {
+          "description": "Sensitive access key secret. Required on create or a change of provider/access key ID. Omit on unrelated updates to retain the existing secret. Empty is invalid. Up to 990 UTF-16 units and 996 UTF-8 bytes after trimming.\n",
+          "secret": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessKeyId",
+        "bucket",
+        "cloudflareAccountId"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoDigitaloceanSpaces:StorageDestinationConnectionInfoDigitaloceanSpaces": {
+      "properties": {
+        "accessKeyId": {
+          "description": "Required except for AWS. Up to 512 characters. Google Cloud Storage requires an HMAC access ID beginning with GOOG.\n",
+          "type": "string"
+        },
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "region": {
+          "description": "Bucket region supported by digitalocean_spaces.\n",
+          "type": "string"
+        },
+        "secretAccessKey": {
+          "description": "Sensitive access key secret. Required on create or a change of provider/access key ID. Omit on unrelated updates to retain the existing secret. Empty is invalid. Up to 990 UTF-16 units and 996 UTF-8 bytes after trimming.\n",
+          "secret": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessKeyId",
+        "bucket",
+        "region"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoGoogleCloudStorage:StorageDestinationConnectionInfoGoogleCloudStorage": {
+      "properties": {
+        "accessKeyId": {
+          "description": "Required except for AWS. Up to 512 characters. Google Cloud Storage requires an HMAC access ID beginning with GOOG.\n",
+          "type": "string"
+        },
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "secretAccessKey": {
+          "description": "Sensitive access key secret. Required on create or a change of provider/access key ID. Omit on unrelated updates to retain the existing secret. Empty is invalid. Up to 990 UTF-16 units and 996 UTF-8 bytes after trimming.\n",
+          "secret": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessKeyId",
+        "bucket"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoOtherS3Compatible:StorageDestinationConnectionInfoOtherS3Compatible": {
+      "properties": {
+        "accessKeyId": {
+          "description": "Required except for AWS. Up to 512 characters. Google Cloud Storage requires an HMAC access ID beginning with GOOG.\n",
+          "type": "string"
+        },
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "endpoint": {
+          "description": "Required for other_s3_compatible. Public HTTPS origin, up to 512 characters, without credentials, path, query, or fragment.\n",
+          "type": "string"
+        },
+        "forcePathStyle": {
+          "description": "Other S3-compatible only. Omitted or null uses true. No value is injected into the request.\n",
+          "type": "boolean"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "region": {
+          "description": "Optional signing region, up to 64 characters. Omitted or null uses the API default us-east-1.\n",
+          "type": "string"
+        },
+        "secretAccessKey": {
+          "description": "Sensitive access key secret. Required on create or a change of provider/access key ID. Omit on unrelated updates to retain the existing secret. Empty is invalid. Up to 990 UTF-16 units and 996 UTF-8 bytes after trimming.\n",
+          "secret": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessKeyId",
+        "bucket",
+        "endpoint"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/StorageDestinationConnectionInfoWasabi:StorageDestinationConnectionInfoWasabi": {
+      "properties": {
+        "accessKeyId": {
+          "description": "Required except for AWS. Up to 512 characters. Google Cloud Storage requires an HMAC access ID beginning with GOOG.\n",
+          "type": "string"
+        },
+        "bucket": {
+          "description": "Existing bucket or Space name, up to 255 characters. The provider never creates or deletes the bucket.\n",
+          "type": "string"
+        },
+        "keyPrefix": {
+          "description": "Object key prefix, up to 1024 characters. The API trims surrounding whitespace and slashes; omission uses the bucket root.\n",
+          "type": "string"
+        },
+        "region": {
+          "description": "Bucket region supported by wasabi.\n",
+          "type": "string"
+        },
+        "secretAccessKey": {
+          "description": "Sensitive access key secret. Required on create or a change of provider/access key ID. Omit on unrelated updates to retain the existing secret. Empty is invalid. Up to 990 UTF-16 units and 996 UTF-8 bytes after trimming.\n",
+          "secret": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessKeyId",
+        "bucket",
+        "region"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/getTemplateVersionsVersion:getTemplateVersionsVersion": {
+      "language": {
+        "nodejs": {
+          "requiredInputs": []
+        }
+      },
+      "properties": {
+        "createdAt": {
+          "description": "Creation timestamp returned by the API.\n",
+          "type": "string"
+        },
+        "description": {
+          "description": "Template description for this version.\n",
+          "type": "string"
+        },
+        "name": {
+          "description": "Template display name for this version.\n",
+          "type": "string"
+        },
+        "templateType": {
+          "description": "Template type returned by the API.\n",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "Update timestamp returned by the API.\n",
+          "type": "string"
+        },
+        "version": {
+          "description": "Exact template version identifier. Represented as a decimal string to preserve int64 precision.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "description",
+        "name",
+        "templateType",
+        "updatedAt",
+        "version"
+      ],
+      "type": "object"
+    }
+  },
+  "version": "0.1.0"
+}
