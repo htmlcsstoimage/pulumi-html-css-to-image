@@ -36,6 +36,12 @@ jobs:
       - name: Test Go SDK publishing
         working-directory: provider
         run: bash scripts/test-publish-go-sdk.sh
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test release asset checks
+        working-directory: provider
+        run: node --test scripts/test-check-release-assets.mjs
   sdks:
     name: SDK / ${{ matrix.language }}
     strategy:

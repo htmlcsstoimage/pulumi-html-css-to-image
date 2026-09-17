@@ -37,7 +37,9 @@ Maven Central uses Portal token credentials and GPG signing. The Java SDK includ
 
 Go publishing uses `scripts/publish-go-sdk.sh` to create a commit containing the generated module, license, and `PROVIDER_SOURCE` commit ID. It preserves the provider checkout and index, advances the `sdk` branch and module tag atomically, and refuses to overwrite a tag with different contents. Retrying an identical publication is a no-op. The workflow needs permission to create and update the `sdk` branch and create `sdk/go/*` tags; repository rules must permit these bot pushes.
 
-The GitHub release stays a draft until all language packages and the Go tag are published. A partial registry publication cannot be rolled back; retries skip existing versions and fail on authentication or other publishing errors. npm prereleases use the `next` distribution tag; stable versions use `latest`.
+The GitHub release stays a draft until all language packages and the Go tag are published. Before running GoReleaser, the workflow checks whether that version already has all six archives, checksums, and `schema.json`, each uploaded with a nonzero size. If complete, it skips the plugin build and upload; an incomplete draft still runs GoReleaser. This checks asset presence, not their contents. API failures fail the check. The existing tag must still match the tested commit.
+
+With separate publishing jobs, **Re-run failed jobs** retries only failed jobs and their dependent jobs, leaving a successful plugin job alone. Workflow changes apply to new runs, not retries of an older run. A partial registry publication cannot be rolled back; retries skip existing versions and fail on authentication or other publishing errors. npm prereleases use the `next` distribution tag; stable versions use `latest`.
 
 See the registry setup instructions for [npm](https://docs.npmjs.com/trusted-publishers/), [PyPI](https://docs.pypi.org/trusted-publishers/), and [NuGet](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing).
 
