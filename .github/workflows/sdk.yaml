@@ -1,0 +1,64 @@
+name: Build SDK
+on:
+  workflow_call:
+    inputs:
+      language:
+        required: true
+        type: string
+      ref:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  build:
+    name: ${{ inputs.language }}
+    runs-on: ubuntu-latest
+    env:
+      GOWORK: 'off'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pulumi/actions@v6
+        with:
+          pulumi-version: '3.245.0'
+      - uses: actions/setup-go@v5
+        if: inputs.language == 'go'
+        with:
+          go-version-file: go.mod
+      - uses: actions/setup-python@v5
+        if: inputs.language == 'python'
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        if: inputs.language == 'dotnet'
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-java@v4
+        if: inputs.language == 'java'
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: packaging/java/pom.xml
+      - name: Generate SDK
+        env:
+          SDK_LANGUAGE: ${{ inputs.language }}
+        run: make "sdk-${SDK_LANGUAGE}"
+      - name: Build and validate SDK
+        env:
+          SDK_LANGUAGE: ${{ inputs.language }}
+        run: bash scripts/package-sdk.sh "$SDK_LANGUAGE"
+      - name: Archive SDK
+        env:
+          SDK_LANGUAGE: ${{ inputs.language }}
+        run: tar --exclude=node_modules -czf "sdk-${SDK_LANGUAGE}.tar.gz" "sdk/${SDK_LANGUAGE}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk-${{ inputs.language }}
+          path: sdk-${{ inputs.language }}.tar.gz
+          if-no-files-found: error

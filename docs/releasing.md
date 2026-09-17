@@ -19,7 +19,7 @@ Follow [Pulumi's registration instructions](https://www.pulumi.com/docs/iac/guid
 
 ## Language package publishing
 
-The same `release.yml` workflow generates SDKs, checks the committed schema for drift, and builds all packages before creating a release. It uses Pulumi's [package publisher](https://github.com/pulumi/pulumi-package-publisher) as a packaging reference, with registry-native trusted publishing for authentication.
+CI checks schema drift and builds the five SDKs in parallel using the reusable `sdk.yaml` workflow. Release uses the same parallel builds, then uploads the provider archives to a draft. Independent publishing jobs in `release.yml` consume their built artifacts and run in parallel; only after all five succeed does the final job publish the GitHub release. Keeping publishing in `release.yml` preserves the configured trusted publisher identities. It uses Pulumi's [package publisher](https://github.com/pulumi/pulumi-package-publisher) as a packaging reference, with registry-native trusted publishing for authentication.
 
 Configure these identities for owner **htmlcsstoimage**, repository **pulumi-html-css-to-image**, workflow **release.yml**, with no environment name:
 

@@ -10,15 +10,18 @@ concurrency:
 permissions:
   contents: read
 jobs:
-  release:
+  prepare:
     if: >-
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'push' &&
       github.event.workflow_run.head_repository.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      id-token: write
+      contents: read
+    outputs:
+      publish: ${{ steps.version.outputs.publish }}
+      create_tag: ${{ steps.version.outputs.create_tag }}
+      tag: ${{ steps.version.outputs.tag }}
     env:
       GOWORK: 'off'
     steps:
@@ -26,9 +29,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.workflow_run.head_sha }}
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
       - name: Check release version
         id: version
         env:
@@ -61,43 +61,38 @@ jobs:
           fi
           echo "create_tag=$create_tag" >> "$GITHUB_OUTPUT"
           echo 'publish=true' >> "$GITHUB_OUTPUT"
-      - uses: pulumi/actions@v6
-        if: steps.version.outputs.publish == 'true'
+  sdks:
+    needs: prepare
+    if: needs.prepare.outputs.publish == 'true'
+    name: SDK / ${{ matrix.language }}
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [nodejs, python, dotnet, go, java]
+    uses: ./.github/workflows/sdk.yaml
+    with:
+      language: ${{ matrix.language }}
+      ref: ${{ github.event.workflow_run.head_sha }}
+  plugin:
+    needs: [prepare, sdks]
+    if: needs.prepare.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GOWORK: 'off'
+    steps:
+      - uses: actions/checkout@v4
         with:
-          pulumi-version: '3.245.0'
-      - uses: actions/setup-node@v4
-        if: steps.version.outputs.publish == 'true'
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-go@v5
         with:
-          node-version: '24'
-          registry-url: https://registry.npmjs.org
-      - uses: actions/setup-python@v5
-        if: steps.version.outputs.publish == 'true'
-        with:
-          python-version: '3.12'
-      - uses: actions/setup-dotnet@v4
-        if: steps.version.outputs.publish == 'true'
-        with:
-          dotnet-version: '10.0.x'
-      - uses: actions/setup-java@v4
-        if: steps.version.outputs.publish == 'true'
-        with:
-          distribution: temurin
-          java-version: '21'
-          cache: maven
-          cache-dependency-path: packaging/java/pom.xml
-          server-id: central
-          server-username: MAVEN_CENTRAL_USERNAME
-          server-password: MAVEN_CENTRAL_PASSWORD
-      - name: Build and verify SDK packages
-        if: steps.version.outputs.publish == 'true'
-        run: |
-          make sdk
-          git diff --exit-code -- internal/provider/schema.json
-          bash scripts/package-sdks.sh
+          go-version-file: go.mod
       - name: Create version tag
-        if: steps.version.outputs.publish == 'true' && steps.version.outputs.create_tag == 'true'
+        if: needs.prepare.outputs.publish == 'true' && needs.prepare.outputs.create_tag == 'true'
         env:
-          TAG: ${{ steps.version.outputs.tag }}
+          TAG: ${{ needs.prepare.outputs.tag }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -105,15 +100,34 @@ jobs:
           git push origin "refs/tags/${TAG}"
       # Run here: tags created with GITHUB_TOKEN do not start another workflow.
       - name: Build release
-        if: steps.version.outputs.publish == 'true'
+        if: needs.prepare.outputs.publish == 'true'
         uses: goreleaser/goreleaser-action@f06c13b6b1a9625abc9e6e439d9c05a8f2190e94 # v7.2.3
         with:
           version: v2.18.2
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ github.token }}
+  publish-nodejs:
+    needs: plugin
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-nodejs
+      - name: Extract tested SDK
+        run: tar -xzf sdk-nodejs.tar.gz
       - name: Publish npm package with trusted publishing
-        if: steps.version.outputs.publish == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -128,25 +142,80 @@ jobs:
               ;;
             *) echo "npm version lookup failed: HTTP $status" >&2; exit 1 ;;
           esac
+  publish-python:
+    needs: plugin
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-python
+      - name: Extract tested SDK
+        run: tar -xzf sdk-python.tar.gz
       - name: Publish Python package with trusted publishing
-        if: steps.version.outputs.publish == 'true'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: sdk/python/dist/
           skip-existing: true
+  publish-dotnet:
+    needs: plugin
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-dotnet
+      - name: Extract tested SDK
+        run: tar -xzf sdk-dotnet.tar.gz
       - name: NuGet trusted publishing login
-        if: steps.version.outputs.publish == 'true'
         uses: NuGet/login@v1
         id: nuget
         with:
           user: ${{ secrets.NUGET_USER }}
       - name: Publish NuGet package
-        if: steps.version.outputs.publish == 'true'
         env:
           NUGET_API_KEY: ${{ steps.nuget.outputs.NUGET_API_KEY }}
         run: dotnet nuget push 'sdk/dotnet/artifacts/*.nupkg' --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+  publish-java:
+    needs: plugin
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: packaging/java/pom.xml
+          server-id: central
+          server-username: MAVEN_CENTRAL_USERNAME
+          server-password: MAVEN_CENTRAL_PASSWORD
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-java
+      - name: Extract tested SDK
+        run: tar -xzf sdk-java.tar.gz
       - name: Check Maven Central version
-        if: steps.version.outputs.publish == 'true'
         id: maven
         run: |
           set -euo pipefail
@@ -170,12 +239,32 @@ jobs:
           MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: mvn --batch-mode --no-transfer-progress -f sdk/java/pom.xml -Prelease deploy
+  publish-go:
+    needs: plugin
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-go
+      - name: Extract tested SDK
+        run: tar -xzf sdk-go.tar.gz
       - name: Publish Go SDK branch and module tag
-        if: steps.version.outputs.publish == 'true'
         run: bash scripts/publish-go-sdk.sh
+  finalize:
+    needs: [prepare, plugin, publish-nodejs, publish-python, publish-dotnet, publish-java, publish-go]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
       - name: Publish completed release
-        if: steps.version.outputs.publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.version.outputs.tag }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ needs.prepare.outputs.tag }}
         run: gh release edit "$TAG" --draft=false

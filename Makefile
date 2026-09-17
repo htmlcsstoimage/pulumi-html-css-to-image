@@ -1,6 +1,6 @@
 VERSION ?= $(shell cat VERSION)
 
-.PHONY: build schema test vet fmt sdk
+.PHONY: build schema test vet fmt sdk sdk-nodejs sdk-python sdk-go sdk-dotnet sdk-java
 schema:
 	go run ./cmd/schema -version $(VERSION)
 build: schema
@@ -12,12 +12,19 @@ vet:
 fmt:
 	gofmt -w cmd internal
 sdk: schema
+	$(MAKE) sdk-nodejs sdk-python sdk-go sdk-dotnet sdk-java
+
+sdk-nodejs:
 	pulumi package gen-sdk internal/provider/schema.json --language nodejs --out sdk
+sdk-python:
 	pulumi package gen-sdk internal/provider/schema.json --language python --out sdk
+sdk-go:
 	pulumi package gen-sdk internal/provider/schema.json --language go --out sdk
 	test -f sdk/go/go.mod || go -C sdk/go mod init github.com/htmlcsstoimage/pulumi-html-css-to-image/sdk/go
 	go -C sdk/go mod edit -go=1.25.11 -require=github.com/pulumi/pulumi/sdk/v3@v3.259.0
 	cd sdk/go && GOWORK=off go mod tidy
+sdk-dotnet:
 	pulumi package gen-sdk internal/provider/schema.json --language dotnet --out sdk
+sdk-java:
 	pulumi package gen-sdk internal/provider/schema.json --language java --out sdk
 	node scripts/prepare-java-sdk.mjs
