@@ -42,6 +42,9 @@ jobs:
       - name: Test release asset checks
         working-directory: provider
         run: node --test scripts/test-check-release-assets.mjs
+      - name: Test NuGet publishing
+        working-directory: provider
+        run: node --test scripts/test-publish-nuget.mjs
   sdks:
     name: SDK / ${{ matrix.language }}
     strategy:

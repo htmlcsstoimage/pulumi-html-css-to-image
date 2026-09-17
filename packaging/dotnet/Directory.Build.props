@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <PackageId>HtmlCssToImage.Pulumi</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>

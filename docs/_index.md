@@ -33,7 +33,7 @@ go get github.com/htmlcsstoimage/pulumi-html-css-to-image/sdk/go
 {{% choosable language csharp %}}
 
 ```sh
-dotnet add package Pulumi.HtmlCssToImage
+dotnet add package HtmlCssToImage.Pulumi
 ```
 
 {{% /choosable %}}
@@ -45,14 +45,14 @@ Maven:
 <dependency>
     <groupId>com.htmlcsstoimage</groupId>
     <artifactId>pulumi</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 ```
 
 Gradle:
 
 ```groovy
-implementation 'com.htmlcsstoimage:pulumi:0.1.1'
+implementation 'com.htmlcsstoimage:pulumi:0.1.2'
 ```
 
 {{% /choosable %}}

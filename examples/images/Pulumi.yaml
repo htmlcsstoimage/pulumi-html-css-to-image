@@ -10,7 +10,7 @@ resources:
     type: pulumi:providers:html-css-to-image
     defaultProvider: true
     options:
-      version: 0.1.1
+      version: 0.1.2
       pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
   htmlCard:
     type: html-css-to-image:index:ImageHtmlCss

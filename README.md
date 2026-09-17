@@ -15,7 +15,7 @@ Install the SDK for your Pulumi project's language:
 | TypeScript / JavaScript | `npm install @html-css-to-image/pulumi` |
 | Python | `pip install pulumi-html-css-to-image` |
 | Go | `go get github.com/htmlcsstoimage/pulumi-html-css-to-image/sdk/go` |
-| C# / .NET | `dotnet add package Pulumi.HtmlCssToImage` |
+| C# / .NET | `dotnet add package HtmlCssToImage.Pulumi` |
 
 For Java, add this Maven dependency:
 
@@ -23,7 +23,7 @@ For Java, add this Maven dependency:
 <dependency>
   <groupId>com.htmlcsstoimage</groupId>
   <artifactId>pulumi</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ resources:
     type: pulumi:providers:html-css-to-image
     defaultProvider: true
     options:
-      version: 0.1.1
+      version: 0.1.2
       pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
   card:
     type: html-css-to-image:index:ImageHtmlCss
