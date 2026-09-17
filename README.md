@@ -23,7 +23,7 @@ For Java, add this Maven dependency:
 <dependency>
   <groupId>com.htmlcsstoimage</groupId>
   <artifactId>pulumi</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ resources:
     type: pulumi:providers:html-css-to-image
     defaultProvider: true
     options:
-      version: 0.1.0
+      version: 0.1.1
       pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
   card:
     type: html-css-to-image:index:ImageHtmlCss
@@ -78,3 +78,7 @@ See [examples](examples) for complete YAML programs. In .NET, the API key secret
 ## Contributing
 
 See [development](docs/development.md) and [releasing](docs/releasing.md). API lifecycle behavior belongs in the Terraform provider; this repository maintains the bridge, exact version conversions, SDK metadata, and Pulumi examples.
+
+---
+
+[HTML/CSS to Image](https://htmlcsstoimage.com) · [Documentation](https://docs.htmlcsstoimage.com/) · [Management API](https://docs.htmlcsstoimage.com/management-api/) · [Pulumi provider repository](https://github.com/htmlcsstoimage/pulumi-html-css-to-image) · [Report an issue](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues)

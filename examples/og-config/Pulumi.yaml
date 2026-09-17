@@ -6,7 +6,7 @@ resources:
     type: pulumi:providers:html-css-to-image
     defaultProvider: true
     options:
-      version: 0.1.0
+      version: 0.1.1
       pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
   cards:
     type: html-css-to-image:index:OgConfig

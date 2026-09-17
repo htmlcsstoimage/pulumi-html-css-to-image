@@ -7,7 +7,7 @@ import (
 	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 
-var version = "0.1.0"
+var version = "0.1.1"
 
 func main() {
 	pf.Main(context.Background(), provider.Name, provider.Info(version), pf.ProviderMetadata{PackageSchema: provider.Schema})
