@@ -29,7 +29,9 @@ python -m pip install build twine
 python -m build sdk/python
 python -m twine check sdk/python/dist/*
 test "$(cat sdk/dotnet/version.txt)" = "$version"
-dotnet pack sdk/dotnet/Pulumi.HtmlCssToImage.csproj --configuration Release --output sdk/dotnet/artifacts
+# Pulumi enables GeneratePackageOnBuild, which suppresses pack's implicit build.
+# Override it so packaging works on a fresh runner without a prebuilt DLL.
+dotnet pack sdk/dotnet/Pulumi.HtmlCssToImage.csproj --configuration Release -p:GeneratePackageOnBuild=false --output sdk/dotnet/artifacts
 GOWORK=off go -C sdk/go test ./...
 node scripts/prepare-java-sdk.mjs
 mvn --batch-mode --no-transfer-progress -f sdk/java/pom.xml clean verify

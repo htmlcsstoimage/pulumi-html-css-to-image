@@ -27,6 +27,9 @@ jobs:
       - name: Test
         working-directory: provider
         run: make test
+      - name: Check schema generation across checkout names
+        working-directory: provider
+        run: bash scripts/test-schema-generation.sh
       - name: Vet
         working-directory: provider
         run: make vet

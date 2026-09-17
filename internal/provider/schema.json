@@ -27,10 +27,11 @@
       }
     }
   },
-  "description": "Manage HTML/CSS to Image resources with Pulumi.",
+  "description": "Create images and manage templates, API keys, storage destinations, proxies, and Open Graph configurations with the HTML/CSS to Image provider for Pulumi.",
   "displayName": "HTML/CSS to Image",
   "functions": {
     "html-css-to-image:index:getAwsStorageExternalId": {
+      "description": "Read the organization's external ID and HCTI writer role ARN before creating an AWS storage destination. No destination ID or input attributes are needed. This does not create a destination or test a bucket connection.\n\nThe caller requires `storage_destinations:create_update` for this lookup.\n\n```hcl\ndata \"htmlcsstoimage_aws_storage_external_id\" \"organization\" {}\n\noutput \"hcti_aws_external_id\" {\n  value = data.htmlcsstoimage_aws_storage_external_id.organization.external_id\n}\n```\n\nUse \u003cspan pulumi-lang-nodejs=\"`externalId`\" pulumi-lang-dotnet=\"`ExternalId`\" pulumi-lang-go=\"`externalId`\" pulumi-lang-python=\"`external_id`\" pulumi-lang-yaml=\"`externalId`\" pulumi-lang-java=\"`externalId`\" pulumi-lang-hcl=\"`external_id`\"\u003e`externalId`\u003c/span\u003e in the IAM role trust policy's `sts:ExternalId` condition, and \u003cspan pulumi-lang-nodejs=\"`writerRoleArn`\" pulumi-lang-dotnet=\"`WriterRoleArn`\" pulumi-lang-go=\"`writerRoleArn`\" pulumi-lang-python=\"`writer_role_arn`\" pulumi-lang-yaml=\"`writerRoleArn`\" pulumi-lang-java=\"`writerRoleArn`\" pulumi-lang-hcl=\"`writer_role_arn`\"\u003e`writerRoleArn`\u003c/span\u003e as its `Principal.AWS`, allowing `sts:AssumeRole`. An external-ID condition alone is not a complete trust policy. Reference the resulting role ARN from the storage destination so Terraform creates the role before HCTI tests the connection.\n\n| Output | Meaning |\n| --- | --- |\n| \u003cspan pulumi-lang-nodejs=\"`externalId`\" pulumi-lang-dotnet=\"`ExternalId`\" pulumi-lang-go=\"`externalId`\" pulumi-lang-python=\"`external_id`\" pulumi-lang-yaml=\"`externalId`\" pulumi-lang-java=\"`externalId`\" pulumi-lang-hcl=\"`external_id`\"\u003e`externalId`\u003c/span\u003e | Organization-specific external ID for the AWS role trust policy. |\n| \u003cspan pulumi-lang-nodejs=\"`writerRoleArn`\" pulumi-lang-dotnet=\"`WriterRoleArn`\" pulumi-lang-go=\"`writerRoleArn`\" pulumi-lang-python=\"`writer_role_arn`\" pulumi-lang-yaml=\"`writerRoleArn`\" pulumi-lang-java=\"`writerRoleArn`\" pulumi-lang-hcl=\"`writer_role_arn`\"\u003e`writerRoleArn`\u003c/span\u003e | HCTI writer role ARN to use as the trust policy's AWS principal. |\n\nLookup failures remain errors, including authorization failures and HTTP 404.\n\nThe returned \u003cspan pulumi-lang-nodejs=\"`writerRoleArn`\" pulumi-lang-dotnet=\"`WriterRoleArn`\" pulumi-lang-go=\"`writerRoleArn`\" pulumi-lang-python=\"`writer_role_arn`\" pulumi-lang-yaml=\"`writerRoleArn`\" pulumi-lang-java=\"`writerRoleArn`\" pulumi-lang-hcl=\"`writer_role_arn`\"\u003e`writerRoleArn`\u003c/span\u003e identifies HCTI's caller role. The storage destination's \u003cspan pulumi-lang-nodejs=\"`roleArn`\" pulumi-lang-dotnet=\"`RoleArn`\" pulumi-lang-go=\"`roleArn`\" pulumi-lang-python=\"`role_arn`\" pulumi-lang-yaml=\"`roleArn`\" pulumi-lang-java=\"`roleArn`\" pulumi-lang-hcl=\"`role_arn`\"\u003e`roleArn`\u003c/span\u003e identifies the role you create in your own AWS account.\n",
       "outputs": {
         "description": "A collection of values returned by getAwsStorageExternalId.\n",
         "properties": {
@@ -49,6 +50,7 @@
       }
     },
     "html-css-to-image:index:getTemplate": {
+      "description": "Read an existing HTML/CSS template without managing its lifecycle. Requires `templates:read`.\n\n## Example Usage\n\n```hcl\ndata \"htmlcsstoimage_template\" \"card\" {\n  id = \"t-YOUR_TEMPLATE_ID\"\n}\n\nresource \"htmlcsstoimage_image_templated\" \"card\" {\n  template_id      = data.htmlcsstoimage_template.card.id\n  template_version = data.htmlcsstoimage_template.card.version\n  template_values  = jsonencode({ title = \"Hello from Terraform\" })\n}\n```\n\nOmitting \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e resolves the latest version on every refresh. In this example a new template version changes the image's \u003cspan pulumi-lang-nodejs=\"`templateVersion`\" pulumi-lang-dotnet=\"`TemplateVersion`\" pulumi-lang-go=\"`templateVersion`\" pulumi-lang-python=\"`template_version`\" pulumi-lang-yaml=\"`templateVersion`\" pulumi-lang-java=\"`templateVersion`\" pulumi-lang-hcl=\"`template_version`\"\u003e`templateVersion`\u003c/span\u003e, so Terraform replaces the image. To pin the lookup, set \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e to a specific version identifier.\n",
       "inputs": {
         "description": "A collection of arguments for invoking getTemplate.\n",
         "properties": {
@@ -193,6 +195,7 @@
       }
     },
     "html-css-to-image:index:getTemplateVersions": {
+      "description": "List versions of an existing template, newest first, up to \u003cspan pulumi-lang-nodejs=\"`limit`\" pulumi-lang-dotnet=\"`Limit`\" pulumi-lang-go=\"`limit`\" pulumi-lang-python=\"`limit`\" pulumi-lang-yaml=\"`limit`\" pulumi-lang-java=\"`limit`\" pulumi-lang-hcl=\"`limit`\"\u003e`limit`\u003c/span\u003e (default \u003cspan pulumi-lang-nodejs=\"`1000`\" pulumi-lang-dotnet=\"`1000`\" pulumi-lang-go=\"`1000`\" pulumi-lang-python=\"`1000`\" pulumi-lang-yaml=\"`1000`\" pulumi-lang-java=\"`1000`\" pulumi-lang-hcl=\"`1000`\"\u003e`1000`\u003c/span\u003e). Requires `templates:read`. The provider follows API pagination automatically and preserves exact integer version identifiers.\n\n## Example Usage\n\n```hcl\ndata \"htmlcsstoimage_template_versions\" \"card\" {\n  id    = \"t-YOUR_TEMPLATE_ID\"\n  limit = 10\n}\n\noutput \"available_versions\" {\n  value = data.htmlcsstoimage_template_versions.card.versions[*].version\n}\n```\n",
       "inputs": {
         "description": "A collection of arguments for invoking getTemplateVersions.\n",
         "properties": {
@@ -263,6 +266,16 @@
     }
   },
   "homepage": "https://htmlcsstoimage.com",
+  "keywords": [
+    "category/utility",
+    "html",
+    "css",
+    "image",
+    "screenshot",
+    "pdf",
+    "templates",
+    "open-graph"
+  ],
   "language": {
     "csharp": {
       "compatibility": "tfbridge20",
@@ -293,16 +306,16 @@
         "@pulumi/pulumi": "^3.0.0"
       },
       "disableUnionOutputTypes": true,
-      "packageDescription": "Manage HTML/CSS to Image resources with Pulumi.",
+      "packageDescription": "Create images and manage templates, API keys, storage destinations, proxies, and Open Graph configurations with the HTML/CSS to Image provider for Pulumi.",
       "packageName": "@html-css-to-image/pulumi",
-      "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-html-css-to-image` repo](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-html-css-to-image` repo](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image/issues).",
+      "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-html-css-to-image` repo](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-html-css-to-image` repo](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image/issues).",
       "respectSchemaVersion": true
     },
     "python": {
       "compatibility": "tfbridge20",
       "packageName": "pulumi_html_css_to_image",
       "pyproject": {},
-      "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-html-css-to-image` repo](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-html-css-to-image` repo](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image/issues).",
+      "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-html-css-to-image` repo](https://github.com/htmlcsstoimage/pulumi-html-css-to-image/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-html-css-to-image` repo](https://github.com/htmlcsstoimage/terraform-provider-html-css-to-image/issues).",
       "requires": {
         "pulumi": "\u003e=3.0.0,\u003c4.0.0"
       },
@@ -310,6 +323,7 @@
     }
   },
   "license": "MIT",
+  "logoUrl": "https://raw.githubusercontent.com/htmlcsstoimage/pulumi-html-css-to-image/main/assets/logo.png",
   "meta": {
     "moduleFormat": "(.*)(?:/[^/]*)"
   },

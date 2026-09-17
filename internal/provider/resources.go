@@ -11,12 +11,16 @@ const Name = "html-css-to-image"
 // Info maps public Pulumi names. Resource behavior and field descriptions come
 // from Terraform; no API lifecycle logic belongs in this package.
 func Info(version string) tfbridge.ProviderInfo {
+	upstreamLicense := tfbridge.MITLicenseType
 	return tfbridge.ProviderInfo{
 		P:    pf.ShimProvider(versionProvider{upstream.New(version, "HCTIPulumi/"+version)}),
 		Name: Name, ResourcePrefix: "htmlcsstoimage", Version: version,
 		GitHubOrg: "htmlcsstoimage", DisplayName: "HTML/CSS to Image",
-		Description: "Manage HTML/CSS to Image resources with Pulumi.",
-		License:     "MIT", Publisher: "htmlcsstoimage", Homepage: "https://htmlcsstoimage.com",
+		Description:       "Create images and manage templates, API keys, storage destinations, proxies, and Open Graph configurations with the HTML/CSS to Image provider for Pulumi.",
+		Keywords:          []string{"category/utility", "html", "css", "image", "screenshot", "pdf", "templates", "open-graph"},
+		LogoURL:           "https://raw.githubusercontent.com/htmlcsstoimage/pulumi-html-css-to-image/main/assets/logo.png",
+		TFProviderLicense: &upstreamLicense,
+		License:           "MIT", Publisher: "htmlcsstoimage", Homepage: "https://htmlcsstoimage.com",
 		Repository:          "https://github.com/htmlcsstoimage/pulumi-html-css-to-image",
 		PluginDownloadURL:   "github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image",
 		MetadataInfo:        tfbridge.NewProviderMetadata(nil),
