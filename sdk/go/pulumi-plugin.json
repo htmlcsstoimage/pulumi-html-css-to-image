@@ -1,6 +1,6 @@
 {
   "resource": true,
   "name": "html-css-to-image",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "server": "github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image"
 }

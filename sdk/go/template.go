@@ -25,7 +25,7 @@ type Template struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrOutput `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.
 	DisableTwemoji pulumi.BoolPtrOutput `pulumi:"disableTwemoji"`
 	// Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.
 	GoogleFonts pulumi.StringArrayOutput `pulumi:"googleFonts"`
@@ -47,6 +47,8 @@ type Template struct {
 	ProxyId pulumi.StringPtrOutput `pulumi:"proxyId"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrOutput `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides TemplateRequestOverrideArrayOutput `pulumi:"requestOverrides"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector pulumi.StringPtrOutput `pulumi:"selector"`
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -116,7 +118,7 @@ type templateState struct {
 	Description *string `pulumi:"description"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale *float64 `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.
 	DisableTwemoji *bool `pulumi:"disableTwemoji"`
 	// Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.
 	GoogleFonts []string `pulumi:"googleFonts"`
@@ -138,6 +140,8 @@ type templateState struct {
 	ProxyId *string `pulumi:"proxyId"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady *bool `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides []TemplateRequestOverride `pulumi:"requestOverrides"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector *string `pulumi:"selector"`
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -175,7 +179,7 @@ type TemplateState struct {
 	Description pulumi.StringPtrInput
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrInput
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.
 	DisableTwemoji pulumi.BoolPtrInput
 	// Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.
 	GoogleFonts pulumi.StringArrayInput
@@ -197,6 +201,8 @@ type TemplateState struct {
 	ProxyId pulumi.StringPtrInput
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrInput
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides TemplateRequestOverrideArrayInput
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector pulumi.StringPtrInput
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -236,7 +242,7 @@ type templateArgs struct {
 	Description *string `pulumi:"description"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale *float64 `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.
 	DisableTwemoji *bool `pulumi:"disableTwemoji"`
 	// Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.
 	GoogleFonts []string `pulumi:"googleFonts"`
@@ -258,6 +264,8 @@ type templateArgs struct {
 	ProxyId *string `pulumi:"proxyId"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady *bool `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides []TemplateRequestOverride `pulumi:"requestOverrides"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector *string `pulumi:"selector"`
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -288,7 +296,7 @@ type TemplateArgs struct {
 	Description pulumi.StringPtrInput
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrInput
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.
 	DisableTwemoji pulumi.BoolPtrInput
 	// Google fonts to load. Separate multiple fonts with a pipe, such as 'Roboto|OpenSans', and set font-family in the CSS to use them.
 	GoogleFonts pulumi.StringArrayInput
@@ -310,6 +318,8 @@ type TemplateArgs struct {
 	ProxyId pulumi.StringPtrInput
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrInput
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides TemplateRequestOverrideArrayInput
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector pulumi.StringPtrInput
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -392,7 +402,7 @@ func (o TemplateOutput) DeviceScale() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Template) pulumi.Float64PtrOutput { return v.DeviceScale }).(pulumi.Float64PtrOutput)
 }
 
-// Disables the Twemoji fallback and renders emoji using native fonts instead.
+// Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.
 func (o TemplateOutput) DisableTwemoji() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Template) pulumi.BoolPtrOutput { return v.DisableTwemoji }).(pulumi.BoolPtrOutput)
 }
@@ -445,6 +455,11 @@ func (o TemplateOutput) ProxyId() pulumi.StringPtrOutput {
 // Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 func (o TemplateOutput) RenderWhenReady() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Template) pulumi.BoolPtrOutput { return v.RenderWhenReady }).(pulumi.BoolPtrOutput)
+}
+
+// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+func (o TemplateOutput) RequestOverrides() TemplateRequestOverrideArrayOutput {
+	return o.ApplyT(func(v *Template) TemplateRequestOverrideArrayOutput { return v.RequestOverrides }).(TemplateRequestOverrideArrayOutput)
 }
 
 // A CSS selector for an element in the HTML. We’ll crop the image to this specific element.

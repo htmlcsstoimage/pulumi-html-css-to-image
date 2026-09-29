@@ -27,7 +27,7 @@ type ImageUrl struct {
 	Css pulumi.StringPtrOutput `pulumi:"css"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrOutput `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji pulumi.BoolPtrOutput `pulumi:"disableTwemoji"`
 	// Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
@@ -73,6 +73,8 @@ type ImageUrl struct {
 	RenderRequiresAuth pulumi.BoolOutput `pulumi:"renderRequiresAuth"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrOutput `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides ImageUrlRequestOverrideArrayOutput `pulumi:"requestOverrides"`
 	// Last base-image save to custom storage, when available.
 	SavedToStorageDestinationAt pulumi.StringOutput `pulumi:"savedToStorageDestinationAt"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
@@ -151,7 +153,7 @@ type imageUrlState struct {
 	Css *string `pulumi:"css"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale *float64 `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji *bool `pulumi:"disableTwemoji"`
 	// Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.
 	Format *string `pulumi:"format"`
@@ -197,6 +199,8 @@ type imageUrlState struct {
 	RenderRequiresAuth *bool `pulumi:"renderRequiresAuth"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady *bool `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides []ImageUrlRequestOverride `pulumi:"requestOverrides"`
 	// Last base-image save to custom storage, when available.
 	SavedToStorageDestinationAt *string `pulumi:"savedToStorageDestinationAt"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
@@ -236,7 +240,7 @@ type ImageUrlState struct {
 	Css pulumi.StringPtrInput
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrInput
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji pulumi.BoolPtrInput
 	// Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.
 	Format pulumi.StringPtrInput
@@ -282,6 +286,8 @@ type ImageUrlState struct {
 	RenderRequiresAuth pulumi.BoolPtrInput
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrInput
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides ImageUrlRequestOverrideArrayInput
 	// Last base-image save to custom storage, when available.
 	SavedToStorageDestinationAt pulumi.StringPtrInput
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
@@ -323,7 +329,7 @@ type imageUrlArgs struct {
 	Css *string `pulumi:"css"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale *float64 `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji *bool `pulumi:"disableTwemoji"`
 	// Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.
 	Format *string `pulumi:"format"`
@@ -355,6 +361,8 @@ type imageUrlArgs struct {
 	ProxyId *string `pulumi:"proxyId"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady *bool `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides []ImageUrlRequestOverride `pulumi:"requestOverrides"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector *string `pulumi:"selector"`
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -389,7 +397,7 @@ type ImageUrlArgs struct {
 	Css pulumi.StringPtrInput
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrInput
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji pulumi.BoolPtrInput
 	// Rendering URL format: png, jpg, jpeg, webp, or pdf. Does not restrict later renders to this format.
 	Format pulumi.StringPtrInput
@@ -421,6 +429,8 @@ type ImageUrlArgs struct {
 	ProxyId pulumi.StringPtrInput
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrInput
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides ImageUrlRequestOverrideArrayInput
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector pulumi.StringPtrInput
 	// Specifies which configured organization storage destination receives the rendered image.
@@ -510,7 +520,7 @@ func (o ImageUrlOutput) DeviceScale() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ImageUrl) pulumi.Float64PtrOutput { return v.DeviceScale }).(pulumi.Float64PtrOutput)
 }
 
-// Disables the Twemoji fallback and renders emoji using native fonts instead.
+// Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.
 func (o ImageUrlOutput) DisableTwemoji() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageUrl) pulumi.BoolPtrOutput { return v.DisableTwemoji }).(pulumi.BoolPtrOutput)
 }
@@ -623,6 +633,11 @@ func (o ImageUrlOutput) RenderRequiresAuth() pulumi.BoolOutput {
 // Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 func (o ImageUrlOutput) RenderWhenReady() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageUrl) pulumi.BoolPtrOutput { return v.RenderWhenReady }).(pulumi.BoolPtrOutput)
+}
+
+// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+func (o ImageUrlOutput) RequestOverrides() ImageUrlRequestOverrideArrayOutput {
+	return o.ApplyT(func(v *ImageUrl) ImageUrlRequestOverrideArrayOutput { return v.RequestOverrides }).(ImageUrlRequestOverrideArrayOutput)
 }
 
 // Last base-image save to custom storage, when available.

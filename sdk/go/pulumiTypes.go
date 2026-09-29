@@ -420,6 +420,121 @@ func (o ImageHtmlCssPdfOptionsMarginsPtrOutput) Top() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ImageHtmlCssRequestOverride struct {
+	// Currently only `block` is supported.
+	Action string `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes []RequestOverrideResourceType `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url *string `pulumi:"url"`
+}
+
+// ImageHtmlCssRequestOverrideInput is an input type that accepts ImageHtmlCssRequestOverrideArgs and ImageHtmlCssRequestOverrideOutput values.
+// You can construct a concrete instance of `ImageHtmlCssRequestOverrideInput` via:
+//
+//	ImageHtmlCssRequestOverrideArgs{...}
+type ImageHtmlCssRequestOverrideInput interface {
+	pulumi.Input
+
+	ToImageHtmlCssRequestOverrideOutput() ImageHtmlCssRequestOverrideOutput
+	ToImageHtmlCssRequestOverrideOutputWithContext(context.Context) ImageHtmlCssRequestOverrideOutput
+}
+
+type ImageHtmlCssRequestOverrideArgs struct {
+	// Currently only `block` is supported.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes RequestOverrideResourceTypeArrayInput `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ImageHtmlCssRequestOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageHtmlCssRequestOverride)(nil)).Elem()
+}
+
+func (i ImageHtmlCssRequestOverrideArgs) ToImageHtmlCssRequestOverrideOutput() ImageHtmlCssRequestOverrideOutput {
+	return i.ToImageHtmlCssRequestOverrideOutputWithContext(context.Background())
+}
+
+func (i ImageHtmlCssRequestOverrideArgs) ToImageHtmlCssRequestOverrideOutputWithContext(ctx context.Context) ImageHtmlCssRequestOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageHtmlCssRequestOverrideOutput)
+}
+
+// ImageHtmlCssRequestOverrideArrayInput is an input type that accepts ImageHtmlCssRequestOverrideArray and ImageHtmlCssRequestOverrideArrayOutput values.
+// You can construct a concrete instance of `ImageHtmlCssRequestOverrideArrayInput` via:
+//
+//	ImageHtmlCssRequestOverrideArray{ ImageHtmlCssRequestOverrideArgs{...} }
+type ImageHtmlCssRequestOverrideArrayInput interface {
+	pulumi.Input
+
+	ToImageHtmlCssRequestOverrideArrayOutput() ImageHtmlCssRequestOverrideArrayOutput
+	ToImageHtmlCssRequestOverrideArrayOutputWithContext(context.Context) ImageHtmlCssRequestOverrideArrayOutput
+}
+
+type ImageHtmlCssRequestOverrideArray []ImageHtmlCssRequestOverrideInput
+
+func (ImageHtmlCssRequestOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageHtmlCssRequestOverride)(nil)).Elem()
+}
+
+func (i ImageHtmlCssRequestOverrideArray) ToImageHtmlCssRequestOverrideArrayOutput() ImageHtmlCssRequestOverrideArrayOutput {
+	return i.ToImageHtmlCssRequestOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ImageHtmlCssRequestOverrideArray) ToImageHtmlCssRequestOverrideArrayOutputWithContext(ctx context.Context) ImageHtmlCssRequestOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageHtmlCssRequestOverrideArrayOutput)
+}
+
+type ImageHtmlCssRequestOverrideOutput struct{ *pulumi.OutputState }
+
+func (ImageHtmlCssRequestOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageHtmlCssRequestOverride)(nil)).Elem()
+}
+
+func (o ImageHtmlCssRequestOverrideOutput) ToImageHtmlCssRequestOverrideOutput() ImageHtmlCssRequestOverrideOutput {
+	return o
+}
+
+func (o ImageHtmlCssRequestOverrideOutput) ToImageHtmlCssRequestOverrideOutputWithContext(ctx context.Context) ImageHtmlCssRequestOverrideOutput {
+	return o
+}
+
+// Currently only `block` is supported.
+func (o ImageHtmlCssRequestOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageHtmlCssRequestOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+func (o ImageHtmlCssRequestOverrideOutput) ResourceTypes() RequestOverrideResourceTypeArrayOutput {
+	return o.ApplyT(func(v ImageHtmlCssRequestOverride) []RequestOverrideResourceType { return v.ResourceTypes }).(RequestOverrideResourceTypeArrayOutput)
+}
+
+// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+func (o ImageHtmlCssRequestOverrideOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageHtmlCssRequestOverride) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ImageHtmlCssRequestOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageHtmlCssRequestOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageHtmlCssRequestOverride)(nil)).Elem()
+}
+
+func (o ImageHtmlCssRequestOverrideArrayOutput) ToImageHtmlCssRequestOverrideArrayOutput() ImageHtmlCssRequestOverrideArrayOutput {
+	return o
+}
+
+func (o ImageHtmlCssRequestOverrideArrayOutput) ToImageHtmlCssRequestOverrideArrayOutputWithContext(ctx context.Context) ImageHtmlCssRequestOverrideArrayOutput {
+	return o
+}
+
+func (o ImageHtmlCssRequestOverrideArrayOutput) Index(i pulumi.IntInput) ImageHtmlCssRequestOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageHtmlCssRequestOverride {
+		return vs[0].([]ImageHtmlCssRequestOverride)[vs[1].(int)]
+	}).(ImageHtmlCssRequestOverrideOutput)
+}
+
 type ImageUrlPdfOptions struct {
 	// PDF margins. Supply all four sides with units.
 	Margins *ImageUrlPdfOptionsMargins `pulumi:"margins"`
@@ -827,6 +942,121 @@ func (o ImageUrlPdfOptionsMarginsPtrOutput) Top() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ImageUrlRequestOverride struct {
+	// Currently only `block` is supported.
+	Action string `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes []RequestOverrideResourceType `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url *string `pulumi:"url"`
+}
+
+// ImageUrlRequestOverrideInput is an input type that accepts ImageUrlRequestOverrideArgs and ImageUrlRequestOverrideOutput values.
+// You can construct a concrete instance of `ImageUrlRequestOverrideInput` via:
+//
+//	ImageUrlRequestOverrideArgs{...}
+type ImageUrlRequestOverrideInput interface {
+	pulumi.Input
+
+	ToImageUrlRequestOverrideOutput() ImageUrlRequestOverrideOutput
+	ToImageUrlRequestOverrideOutputWithContext(context.Context) ImageUrlRequestOverrideOutput
+}
+
+type ImageUrlRequestOverrideArgs struct {
+	// Currently only `block` is supported.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes RequestOverrideResourceTypeArrayInput `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ImageUrlRequestOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageUrlRequestOverride)(nil)).Elem()
+}
+
+func (i ImageUrlRequestOverrideArgs) ToImageUrlRequestOverrideOutput() ImageUrlRequestOverrideOutput {
+	return i.ToImageUrlRequestOverrideOutputWithContext(context.Background())
+}
+
+func (i ImageUrlRequestOverrideArgs) ToImageUrlRequestOverrideOutputWithContext(ctx context.Context) ImageUrlRequestOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageUrlRequestOverrideOutput)
+}
+
+// ImageUrlRequestOverrideArrayInput is an input type that accepts ImageUrlRequestOverrideArray and ImageUrlRequestOverrideArrayOutput values.
+// You can construct a concrete instance of `ImageUrlRequestOverrideArrayInput` via:
+//
+//	ImageUrlRequestOverrideArray{ ImageUrlRequestOverrideArgs{...} }
+type ImageUrlRequestOverrideArrayInput interface {
+	pulumi.Input
+
+	ToImageUrlRequestOverrideArrayOutput() ImageUrlRequestOverrideArrayOutput
+	ToImageUrlRequestOverrideArrayOutputWithContext(context.Context) ImageUrlRequestOverrideArrayOutput
+}
+
+type ImageUrlRequestOverrideArray []ImageUrlRequestOverrideInput
+
+func (ImageUrlRequestOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageUrlRequestOverride)(nil)).Elem()
+}
+
+func (i ImageUrlRequestOverrideArray) ToImageUrlRequestOverrideArrayOutput() ImageUrlRequestOverrideArrayOutput {
+	return i.ToImageUrlRequestOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ImageUrlRequestOverrideArray) ToImageUrlRequestOverrideArrayOutputWithContext(ctx context.Context) ImageUrlRequestOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageUrlRequestOverrideArrayOutput)
+}
+
+type ImageUrlRequestOverrideOutput struct{ *pulumi.OutputState }
+
+func (ImageUrlRequestOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageUrlRequestOverride)(nil)).Elem()
+}
+
+func (o ImageUrlRequestOverrideOutput) ToImageUrlRequestOverrideOutput() ImageUrlRequestOverrideOutput {
+	return o
+}
+
+func (o ImageUrlRequestOverrideOutput) ToImageUrlRequestOverrideOutputWithContext(ctx context.Context) ImageUrlRequestOverrideOutput {
+	return o
+}
+
+// Currently only `block` is supported.
+func (o ImageUrlRequestOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageUrlRequestOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+func (o ImageUrlRequestOverrideOutput) ResourceTypes() RequestOverrideResourceTypeArrayOutput {
+	return o.ApplyT(func(v ImageUrlRequestOverride) []RequestOverrideResourceType { return v.ResourceTypes }).(RequestOverrideResourceTypeArrayOutput)
+}
+
+// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+func (o ImageUrlRequestOverrideOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageUrlRequestOverride) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ImageUrlRequestOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageUrlRequestOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageUrlRequestOverride)(nil)).Elem()
+}
+
+func (o ImageUrlRequestOverrideArrayOutput) ToImageUrlRequestOverrideArrayOutput() ImageUrlRequestOverrideArrayOutput {
+	return o
+}
+
+func (o ImageUrlRequestOverrideArrayOutput) ToImageUrlRequestOverrideArrayOutputWithContext(ctx context.Context) ImageUrlRequestOverrideArrayOutput {
+	return o
+}
+
+func (o ImageUrlRequestOverrideArrayOutput) Index(i pulumi.IntInput) ImageUrlRequestOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageUrlRequestOverride {
+		return vs[0].([]ImageUrlRequestOverride)[vs[1].(int)]
+	}).(ImageUrlRequestOverrideOutput)
+}
+
 type OgConfigDefaultOptions struct {
 	// Additional exact HTTP or HTTPS origins allowed to receive custom headers. Supports up to 20 unique origins of up to 512 UTF-8 bytes each. Origins must use the format scheme://host[:port] without a path; duplicates are ignored.
 	AdditionalHeaderOrigins []string `pulumi:"additionalHeaderOrigins"`
@@ -838,7 +1068,7 @@ type OgConfigDefaultOptions struct {
 	Css *string `pulumi:"css"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale *float64 `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the captured URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji *bool `pulumi:"disableTwemoji"`
 	// HTTP headers to include on top-level page navigations to the requested URL's origin and any additional_header_origins. Supports up to 20 headers with names up to 512 ASCII characters and values up to 8192 UTF-8 bytes.
 	Headers map[string]string `pulumi:"headers"`
@@ -856,6 +1086,8 @@ type OgConfigDefaultOptions struct {
 	ProxyId *string `pulumi:"proxyId"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady *bool `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides []OgConfigDefaultOptionsRequestOverride `pulumi:"requestOverrides"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector *string `pulumi:"selector"`
 	// Configured storage destination ID. Must be enabled and allow HCTI storage.
@@ -898,7 +1130,7 @@ type OgConfigDefaultOptionsArgs struct {
 	Css pulumi.StringPtrInput `pulumi:"css"`
 	// Adjusts the pixel ratio used for the screenshot. Minimum: 0.1. Maximum: 3. HTML and template renders default to 2; URL renders default to 1.
 	DeviceScale pulumi.Float64PtrInput `pulumi:"deviceScale"`
-	// Disables the Twemoji fallback and renders emoji using native fonts instead.
+	// Set false to inject Twemoji into the captured URL page. Omitted or true leaves the page's emoji handling unchanged.
 	DisableTwemoji pulumi.BoolPtrInput `pulumi:"disableTwemoji"`
 	// HTTP headers to include on top-level page navigations to the requested URL's origin and any additional_header_origins. Supports up to 20 headers with names up to 512 ASCII characters and values up to 8192 UTF-8 bytes.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
@@ -916,6 +1148,8 @@ type OgConfigDefaultOptionsArgs struct {
 	ProxyId pulumi.StringPtrInput `pulumi:"proxyId"`
 	// Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 	RenderWhenReady pulumi.BoolPtrInput `pulumi:"renderWhenReady"`
+	// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+	RequestOverrides OgConfigDefaultOptionsRequestOverrideArrayInput `pulumi:"requestOverrides"`
 	// A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// Configured storage destination ID. Must be enabled and allow HCTI storage.
@@ -1038,7 +1272,7 @@ func (o OgConfigDefaultOptionsOutput) DeviceScale() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OgConfigDefaultOptions) *float64 { return v.DeviceScale }).(pulumi.Float64PtrOutput)
 }
 
-// Disables the Twemoji fallback and renders emoji using native fonts instead.
+// Set false to inject Twemoji into the captured URL page. Omitted or true leaves the page's emoji handling unchanged.
 func (o OgConfigDefaultOptionsOutput) DisableTwemoji() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OgConfigDefaultOptions) *bool { return v.DisableTwemoji }).(pulumi.BoolPtrOutput)
 }
@@ -1081,6 +1315,11 @@ func (o OgConfigDefaultOptionsOutput) ProxyId() pulumi.StringPtrOutput {
 // Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.
 func (o OgConfigDefaultOptionsOutput) RenderWhenReady() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OgConfigDefaultOptions) *bool { return v.RenderWhenReady }).(pulumi.BoolPtrOutput)
+}
+
+// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+func (o OgConfigDefaultOptionsOutput) RequestOverrides() OgConfigDefaultOptionsRequestOverrideArrayOutput {
+	return o.ApplyT(func(v OgConfigDefaultOptions) []OgConfigDefaultOptionsRequestOverride { return v.RequestOverrides }).(OgConfigDefaultOptionsRequestOverrideArrayOutput)
 }
 
 // A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
@@ -1202,7 +1441,7 @@ func (o OgConfigDefaultOptionsPtrOutput) DeviceScale() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Disables the Twemoji fallback and renders emoji using native fonts instead.
+// Set false to inject Twemoji into the captured URL page. Omitted or true leaves the page's emoji handling unchanged.
 func (o OgConfigDefaultOptionsPtrOutput) DisableTwemoji() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OgConfigDefaultOptions) *bool {
 		if v == nil {
@@ -1290,6 +1529,16 @@ func (o OgConfigDefaultOptionsPtrOutput) RenderWhenReady() pulumi.BoolPtrOutput 
 		}
 		return v.RenderWhenReady
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.
+func (o OgConfigDefaultOptionsPtrOutput) RequestOverrides() OgConfigDefaultOptionsRequestOverrideArrayOutput {
+	return o.ApplyT(func(v *OgConfigDefaultOptions) []OgConfigDefaultOptionsRequestOverride {
+		if v == nil {
+			return nil
+		}
+		return v.RequestOverrides
+	}).(OgConfigDefaultOptionsRequestOverrideArrayOutput)
 }
 
 // A CSS selector for an element in the HTML. We’ll crop the image to this specific element.
@@ -1380,6 +1629,121 @@ func (o OgConfigDefaultOptionsPtrOutput) ViewportWidth() pulumi.IntPtrOutput {
 		}
 		return v.ViewportWidth
 	}).(pulumi.IntPtrOutput)
+}
+
+type OgConfigDefaultOptionsRequestOverride struct {
+	// Currently only `block` is supported.
+	Action string `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes []RequestOverrideResourceType `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url *string `pulumi:"url"`
+}
+
+// OgConfigDefaultOptionsRequestOverrideInput is an input type that accepts OgConfigDefaultOptionsRequestOverrideArgs and OgConfigDefaultOptionsRequestOverrideOutput values.
+// You can construct a concrete instance of `OgConfigDefaultOptionsRequestOverrideInput` via:
+//
+//	OgConfigDefaultOptionsRequestOverrideArgs{...}
+type OgConfigDefaultOptionsRequestOverrideInput interface {
+	pulumi.Input
+
+	ToOgConfigDefaultOptionsRequestOverrideOutput() OgConfigDefaultOptionsRequestOverrideOutput
+	ToOgConfigDefaultOptionsRequestOverrideOutputWithContext(context.Context) OgConfigDefaultOptionsRequestOverrideOutput
+}
+
+type OgConfigDefaultOptionsRequestOverrideArgs struct {
+	// Currently only `block` is supported.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes RequestOverrideResourceTypeArrayInput `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (OgConfigDefaultOptionsRequestOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OgConfigDefaultOptionsRequestOverride)(nil)).Elem()
+}
+
+func (i OgConfigDefaultOptionsRequestOverrideArgs) ToOgConfigDefaultOptionsRequestOverrideOutput() OgConfigDefaultOptionsRequestOverrideOutput {
+	return i.ToOgConfigDefaultOptionsRequestOverrideOutputWithContext(context.Background())
+}
+
+func (i OgConfigDefaultOptionsRequestOverrideArgs) ToOgConfigDefaultOptionsRequestOverrideOutputWithContext(ctx context.Context) OgConfigDefaultOptionsRequestOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OgConfigDefaultOptionsRequestOverrideOutput)
+}
+
+// OgConfigDefaultOptionsRequestOverrideArrayInput is an input type that accepts OgConfigDefaultOptionsRequestOverrideArray and OgConfigDefaultOptionsRequestOverrideArrayOutput values.
+// You can construct a concrete instance of `OgConfigDefaultOptionsRequestOverrideArrayInput` via:
+//
+//	OgConfigDefaultOptionsRequestOverrideArray{ OgConfigDefaultOptionsRequestOverrideArgs{...} }
+type OgConfigDefaultOptionsRequestOverrideArrayInput interface {
+	pulumi.Input
+
+	ToOgConfigDefaultOptionsRequestOverrideArrayOutput() OgConfigDefaultOptionsRequestOverrideArrayOutput
+	ToOgConfigDefaultOptionsRequestOverrideArrayOutputWithContext(context.Context) OgConfigDefaultOptionsRequestOverrideArrayOutput
+}
+
+type OgConfigDefaultOptionsRequestOverrideArray []OgConfigDefaultOptionsRequestOverrideInput
+
+func (OgConfigDefaultOptionsRequestOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OgConfigDefaultOptionsRequestOverride)(nil)).Elem()
+}
+
+func (i OgConfigDefaultOptionsRequestOverrideArray) ToOgConfigDefaultOptionsRequestOverrideArrayOutput() OgConfigDefaultOptionsRequestOverrideArrayOutput {
+	return i.ToOgConfigDefaultOptionsRequestOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i OgConfigDefaultOptionsRequestOverrideArray) ToOgConfigDefaultOptionsRequestOverrideArrayOutputWithContext(ctx context.Context) OgConfigDefaultOptionsRequestOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OgConfigDefaultOptionsRequestOverrideArrayOutput)
+}
+
+type OgConfigDefaultOptionsRequestOverrideOutput struct{ *pulumi.OutputState }
+
+func (OgConfigDefaultOptionsRequestOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OgConfigDefaultOptionsRequestOverride)(nil)).Elem()
+}
+
+func (o OgConfigDefaultOptionsRequestOverrideOutput) ToOgConfigDefaultOptionsRequestOverrideOutput() OgConfigDefaultOptionsRequestOverrideOutput {
+	return o
+}
+
+func (o OgConfigDefaultOptionsRequestOverrideOutput) ToOgConfigDefaultOptionsRequestOverrideOutputWithContext(ctx context.Context) OgConfigDefaultOptionsRequestOverrideOutput {
+	return o
+}
+
+// Currently only `block` is supported.
+func (o OgConfigDefaultOptionsRequestOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v OgConfigDefaultOptionsRequestOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+func (o OgConfigDefaultOptionsRequestOverrideOutput) ResourceTypes() RequestOverrideResourceTypeArrayOutput {
+	return o.ApplyT(func(v OgConfigDefaultOptionsRequestOverride) []RequestOverrideResourceType { return v.ResourceTypes }).(RequestOverrideResourceTypeArrayOutput)
+}
+
+// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+func (o OgConfigDefaultOptionsRequestOverrideOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OgConfigDefaultOptionsRequestOverride) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type OgConfigDefaultOptionsRequestOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (OgConfigDefaultOptionsRequestOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OgConfigDefaultOptionsRequestOverride)(nil)).Elem()
+}
+
+func (o OgConfigDefaultOptionsRequestOverrideArrayOutput) ToOgConfigDefaultOptionsRequestOverrideArrayOutput() OgConfigDefaultOptionsRequestOverrideArrayOutput {
+	return o
+}
+
+func (o OgConfigDefaultOptionsRequestOverrideArrayOutput) ToOgConfigDefaultOptionsRequestOverrideArrayOutputWithContext(ctx context.Context) OgConfigDefaultOptionsRequestOverrideArrayOutput {
+	return o
+}
+
+func (o OgConfigDefaultOptionsRequestOverrideArrayOutput) Index(i pulumi.IntInput) OgConfigDefaultOptionsRequestOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OgConfigDefaultOptionsRequestOverride {
+		return vs[0].([]OgConfigDefaultOptionsRequestOverride)[vs[1].(int)]
+	}).(OgConfigDefaultOptionsRequestOverrideOutput)
 }
 
 type OgConfigTemplateValuesMapping struct {
@@ -3424,6 +3788,227 @@ func (o StorageDestinationConnectionInfoWasabiPtrOutput) SecretAccessKey() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type TemplateRequestOverride struct {
+	// Currently only `block` is supported.
+	Action string `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes []RequestOverrideResourceType `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url *string `pulumi:"url"`
+}
+
+// TemplateRequestOverrideInput is an input type that accepts TemplateRequestOverrideArgs and TemplateRequestOverrideOutput values.
+// You can construct a concrete instance of `TemplateRequestOverrideInput` via:
+//
+//	TemplateRequestOverrideArgs{...}
+type TemplateRequestOverrideInput interface {
+	pulumi.Input
+
+	ToTemplateRequestOverrideOutput() TemplateRequestOverrideOutput
+	ToTemplateRequestOverrideOutputWithContext(context.Context) TemplateRequestOverrideOutput
+}
+
+type TemplateRequestOverrideArgs struct {
+	// Currently only `block` is supported.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+	ResourceTypes RequestOverrideResourceTypeArrayInput `pulumi:"resourceTypes"`
+	// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (TemplateRequestOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateRequestOverride)(nil)).Elem()
+}
+
+func (i TemplateRequestOverrideArgs) ToTemplateRequestOverrideOutput() TemplateRequestOverrideOutput {
+	return i.ToTemplateRequestOverrideOutputWithContext(context.Background())
+}
+
+func (i TemplateRequestOverrideArgs) ToTemplateRequestOverrideOutputWithContext(ctx context.Context) TemplateRequestOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateRequestOverrideOutput)
+}
+
+// TemplateRequestOverrideArrayInput is an input type that accepts TemplateRequestOverrideArray and TemplateRequestOverrideArrayOutput values.
+// You can construct a concrete instance of `TemplateRequestOverrideArrayInput` via:
+//
+//	TemplateRequestOverrideArray{ TemplateRequestOverrideArgs{...} }
+type TemplateRequestOverrideArrayInput interface {
+	pulumi.Input
+
+	ToTemplateRequestOverrideArrayOutput() TemplateRequestOverrideArrayOutput
+	ToTemplateRequestOverrideArrayOutputWithContext(context.Context) TemplateRequestOverrideArrayOutput
+}
+
+type TemplateRequestOverrideArray []TemplateRequestOverrideInput
+
+func (TemplateRequestOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateRequestOverride)(nil)).Elem()
+}
+
+func (i TemplateRequestOverrideArray) ToTemplateRequestOverrideArrayOutput() TemplateRequestOverrideArrayOutput {
+	return i.ToTemplateRequestOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateRequestOverrideArray) ToTemplateRequestOverrideArrayOutputWithContext(ctx context.Context) TemplateRequestOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateRequestOverrideArrayOutput)
+}
+
+type TemplateRequestOverrideOutput struct{ *pulumi.OutputState }
+
+func (TemplateRequestOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateRequestOverride)(nil)).Elem()
+}
+
+func (o TemplateRequestOverrideOutput) ToTemplateRequestOverrideOutput() TemplateRequestOverrideOutput {
+	return o
+}
+
+func (o TemplateRequestOverrideOutput) ToTemplateRequestOverrideOutputWithContext(ctx context.Context) TemplateRequestOverrideOutput {
+	return o
+}
+
+// Currently only `block` is supported.
+func (o TemplateRequestOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateRequestOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.
+func (o TemplateRequestOverrideOutput) ResourceTypes() RequestOverrideResourceTypeArrayOutput {
+	return o.ApplyT(func(v TemplateRequestOverride) []RequestOverrideResourceType { return v.ResourceTypes }).(RequestOverrideResourceTypeArrayOutput)
+}
+
+// Case-sensitive URL wildcard pattern using `*`; at most 512 characters.
+func (o TemplateRequestOverrideOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateRequestOverride) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type TemplateRequestOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateRequestOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateRequestOverride)(nil)).Elem()
+}
+
+func (o TemplateRequestOverrideArrayOutput) ToTemplateRequestOverrideArrayOutput() TemplateRequestOverrideArrayOutput {
+	return o
+}
+
+func (o TemplateRequestOverrideArrayOutput) ToTemplateRequestOverrideArrayOutputWithContext(ctx context.Context) TemplateRequestOverrideArrayOutput {
+	return o
+}
+
+func (o TemplateRequestOverrideArrayOutput) Index(i pulumi.IntInput) TemplateRequestOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateRequestOverride {
+		return vs[0].([]TemplateRequestOverride)[vs[1].(int)]
+	}).(TemplateRequestOverrideOutput)
+}
+
+type GetTemplateRequestOverride struct {
+	Action        string                        `pulumi:"action"`
+	ResourceTypes []RequestOverrideResourceType `pulumi:"resourceTypes"`
+	Url           string                        `pulumi:"url"`
+}
+
+// GetTemplateRequestOverrideInput is an input type that accepts GetTemplateRequestOverrideArgs and GetTemplateRequestOverrideOutput values.
+// You can construct a concrete instance of `GetTemplateRequestOverrideInput` via:
+//
+//	GetTemplateRequestOverrideArgs{...}
+type GetTemplateRequestOverrideInput interface {
+	pulumi.Input
+
+	ToGetTemplateRequestOverrideOutput() GetTemplateRequestOverrideOutput
+	ToGetTemplateRequestOverrideOutputWithContext(context.Context) GetTemplateRequestOverrideOutput
+}
+
+type GetTemplateRequestOverrideArgs struct {
+	Action        pulumi.StringInput                    `pulumi:"action"`
+	ResourceTypes RequestOverrideResourceTypeArrayInput `pulumi:"resourceTypes"`
+	Url           pulumi.StringInput                    `pulumi:"url"`
+}
+
+func (GetTemplateRequestOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateRequestOverride)(nil)).Elem()
+}
+
+func (i GetTemplateRequestOverrideArgs) ToGetTemplateRequestOverrideOutput() GetTemplateRequestOverrideOutput {
+	return i.ToGetTemplateRequestOverrideOutputWithContext(context.Background())
+}
+
+func (i GetTemplateRequestOverrideArgs) ToGetTemplateRequestOverrideOutputWithContext(ctx context.Context) GetTemplateRequestOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateRequestOverrideOutput)
+}
+
+// GetTemplateRequestOverrideArrayInput is an input type that accepts GetTemplateRequestOverrideArray and GetTemplateRequestOverrideArrayOutput values.
+// You can construct a concrete instance of `GetTemplateRequestOverrideArrayInput` via:
+//
+//	GetTemplateRequestOverrideArray{ GetTemplateRequestOverrideArgs{...} }
+type GetTemplateRequestOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateRequestOverrideArrayOutput() GetTemplateRequestOverrideArrayOutput
+	ToGetTemplateRequestOverrideArrayOutputWithContext(context.Context) GetTemplateRequestOverrideArrayOutput
+}
+
+type GetTemplateRequestOverrideArray []GetTemplateRequestOverrideInput
+
+func (GetTemplateRequestOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateRequestOverride)(nil)).Elem()
+}
+
+func (i GetTemplateRequestOverrideArray) ToGetTemplateRequestOverrideArrayOutput() GetTemplateRequestOverrideArrayOutput {
+	return i.ToGetTemplateRequestOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateRequestOverrideArray) ToGetTemplateRequestOverrideArrayOutputWithContext(ctx context.Context) GetTemplateRequestOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateRequestOverrideArrayOutput)
+}
+
+type GetTemplateRequestOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateRequestOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateRequestOverride)(nil)).Elem()
+}
+
+func (o GetTemplateRequestOverrideOutput) ToGetTemplateRequestOverrideOutput() GetTemplateRequestOverrideOutput {
+	return o
+}
+
+func (o GetTemplateRequestOverrideOutput) ToGetTemplateRequestOverrideOutputWithContext(ctx context.Context) GetTemplateRequestOverrideOutput {
+	return o
+}
+
+func (o GetTemplateRequestOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateRequestOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetTemplateRequestOverrideOutput) ResourceTypes() RequestOverrideResourceTypeArrayOutput {
+	return o.ApplyT(func(v GetTemplateRequestOverride) []RequestOverrideResourceType { return v.ResourceTypes }).(RequestOverrideResourceTypeArrayOutput)
+}
+
+func (o GetTemplateRequestOverrideOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateRequestOverride) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetTemplateRequestOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateRequestOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateRequestOverride)(nil)).Elem()
+}
+
+func (o GetTemplateRequestOverrideArrayOutput) ToGetTemplateRequestOverrideArrayOutput() GetTemplateRequestOverrideArrayOutput {
+	return o
+}
+
+func (o GetTemplateRequestOverrideArrayOutput) ToGetTemplateRequestOverrideArrayOutputWithContext(ctx context.Context) GetTemplateRequestOverrideArrayOutput {
+	return o
+}
+
+func (o GetTemplateRequestOverrideArrayOutput) Index(i pulumi.IntInput) GetTemplateRequestOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateRequestOverride {
+		return vs[0].([]GetTemplateRequestOverride)[vs[1].(int)]
+	}).(GetTemplateRequestOverrideOutput)
+}
+
 type GetTemplateVersionsVersion struct {
 	// Creation timestamp returned by the API.
 	CreatedAt string `pulumi:"createdAt"`
@@ -3571,12 +4156,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageHtmlCssPdfOptionsPtrInput)(nil)).Elem(), ImageHtmlCssPdfOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageHtmlCssPdfOptionsMarginsInput)(nil)).Elem(), ImageHtmlCssPdfOptionsMarginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageHtmlCssPdfOptionsMarginsPtrInput)(nil)).Elem(), ImageHtmlCssPdfOptionsMarginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageHtmlCssRequestOverrideInput)(nil)).Elem(), ImageHtmlCssRequestOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageHtmlCssRequestOverrideArrayInput)(nil)).Elem(), ImageHtmlCssRequestOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageUrlPdfOptionsInput)(nil)).Elem(), ImageUrlPdfOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageUrlPdfOptionsPtrInput)(nil)).Elem(), ImageUrlPdfOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageUrlPdfOptionsMarginsInput)(nil)).Elem(), ImageUrlPdfOptionsMarginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageUrlPdfOptionsMarginsPtrInput)(nil)).Elem(), ImageUrlPdfOptionsMarginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageUrlRequestOverrideInput)(nil)).Elem(), ImageUrlRequestOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageUrlRequestOverrideArrayInput)(nil)).Elem(), ImageUrlRequestOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OgConfigDefaultOptionsInput)(nil)).Elem(), OgConfigDefaultOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OgConfigDefaultOptionsPtrInput)(nil)).Elem(), OgConfigDefaultOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OgConfigDefaultOptionsRequestOverrideInput)(nil)).Elem(), OgConfigDefaultOptionsRequestOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OgConfigDefaultOptionsRequestOverrideArrayInput)(nil)).Elem(), OgConfigDefaultOptionsRequestOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OgConfigTemplateValuesMappingInput)(nil)).Elem(), OgConfigTemplateValuesMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OgConfigTemplateValuesMappingArrayInput)(nil)).Elem(), OgConfigTemplateValuesMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProxyAuthenticationInput)(nil)).Elem(), ProxyAuthenticationArgs{})
@@ -3597,18 +4188,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDestinationConnectionInfoOtherS3CompatiblePtrInput)(nil)).Elem(), StorageDestinationConnectionInfoOtherS3CompatibleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDestinationConnectionInfoWasabiInput)(nil)).Elem(), StorageDestinationConnectionInfoWasabiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDestinationConnectionInfoWasabiPtrInput)(nil)).Elem(), StorageDestinationConnectionInfoWasabiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateRequestOverrideInput)(nil)).Elem(), TemplateRequestOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateRequestOverrideArrayInput)(nil)).Elem(), TemplateRequestOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateRequestOverrideInput)(nil)).Elem(), GetTemplateRequestOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateRequestOverrideArrayInput)(nil)).Elem(), GetTemplateRequestOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateVersionsVersionInput)(nil)).Elem(), GetTemplateVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateVersionsVersionArrayInput)(nil)).Elem(), GetTemplateVersionsVersionArray{})
 	pulumi.RegisterOutputType(ImageHtmlCssPdfOptionsOutput{})
 	pulumi.RegisterOutputType(ImageHtmlCssPdfOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ImageHtmlCssPdfOptionsMarginsOutput{})
 	pulumi.RegisterOutputType(ImageHtmlCssPdfOptionsMarginsPtrOutput{})
+	pulumi.RegisterOutputType(ImageHtmlCssRequestOverrideOutput{})
+	pulumi.RegisterOutputType(ImageHtmlCssRequestOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ImageUrlPdfOptionsOutput{})
 	pulumi.RegisterOutputType(ImageUrlPdfOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ImageUrlPdfOptionsMarginsOutput{})
 	pulumi.RegisterOutputType(ImageUrlPdfOptionsMarginsPtrOutput{})
+	pulumi.RegisterOutputType(ImageUrlRequestOverrideOutput{})
+	pulumi.RegisterOutputType(ImageUrlRequestOverrideArrayOutput{})
 	pulumi.RegisterOutputType(OgConfigDefaultOptionsOutput{})
 	pulumi.RegisterOutputType(OgConfigDefaultOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OgConfigDefaultOptionsRequestOverrideOutput{})
+	pulumi.RegisterOutputType(OgConfigDefaultOptionsRequestOverrideArrayOutput{})
 	pulumi.RegisterOutputType(OgConfigTemplateValuesMappingOutput{})
 	pulumi.RegisterOutputType(OgConfigTemplateValuesMappingArrayOutput{})
 	pulumi.RegisterOutputType(ProxyAuthenticationOutput{})
@@ -3629,6 +4230,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageDestinationConnectionInfoOtherS3CompatiblePtrOutput{})
 	pulumi.RegisterOutputType(StorageDestinationConnectionInfoWasabiOutput{})
 	pulumi.RegisterOutputType(StorageDestinationConnectionInfoWasabiPtrOutput{})
+	pulumi.RegisterOutputType(TemplateRequestOverrideOutput{})
+	pulumi.RegisterOutputType(TemplateRequestOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateRequestOverrideOutput{})
+	pulumi.RegisterOutputType(GetTemplateRequestOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetTemplateVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetTemplateVersionsVersionArrayOutput{})
 }

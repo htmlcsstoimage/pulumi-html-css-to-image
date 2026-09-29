@@ -34,35 +34,36 @@ type LookupTemplateArgs struct {
 
 // A collection of values returned by getTemplate.
 type LookupTemplateResult struct {
-	ColorScheme           string   `pulumi:"colorScheme"`
-	CreatedAt             string   `pulumi:"createdAt"`
-	Css                   string   `pulumi:"css"`
-	Description           string   `pulumi:"description"`
-	DeviceScale           float64  `pulumi:"deviceScale"`
-	DisableTwemoji        bool     `pulumi:"disableTwemoji"`
-	GoogleFonts           []string `pulumi:"googleFonts"`
-	Html                  string   `pulumi:"html"`
-	Id                    string   `pulumi:"id"`
-	JumboMaxHeight        int      `pulumi:"jumboMaxHeight"`
-	JumboMaxWidth         int      `pulumi:"jumboMaxWidth"`
-	MaxWaitMs             int      `pulumi:"maxWaitMs"`
-	MediaType             string   `pulumi:"mediaType"`
-	MsDelay               int      `pulumi:"msDelay"`
-	Name                  string   `pulumi:"name"`
-	ProxyId               string   `pulumi:"proxyId"`
-	RenderWhenReady       bool     `pulumi:"renderWhenReady"`
-	Selector              string   `pulumi:"selector"`
-	StorageDestinationId  string   `pulumi:"storageDestinationId"`
-	TemplateType          string   `pulumi:"templateType"`
-	Timezone              string   `pulumi:"timezone"`
-	TransparentBackground bool     `pulumi:"transparentBackground"`
-	UpdatedAt             string   `pulumi:"updatedAt"`
-	Version               string   `pulumi:"version"`
-	ViewportHeight        int      `pulumi:"viewportHeight"`
-	ViewportLandscape     bool     `pulumi:"viewportLandscape"`
-	ViewportMobile        bool     `pulumi:"viewportMobile"`
-	ViewportTouch         bool     `pulumi:"viewportTouch"`
-	ViewportWidth         int      `pulumi:"viewportWidth"`
+	ColorScheme           string                       `pulumi:"colorScheme"`
+	CreatedAt             string                       `pulumi:"createdAt"`
+	Css                   string                       `pulumi:"css"`
+	Description           string                       `pulumi:"description"`
+	DeviceScale           float64                      `pulumi:"deviceScale"`
+	DisableTwemoji        bool                         `pulumi:"disableTwemoji"`
+	GoogleFonts           []string                     `pulumi:"googleFonts"`
+	Html                  string                       `pulumi:"html"`
+	Id                    string                       `pulumi:"id"`
+	JumboMaxHeight        int                          `pulumi:"jumboMaxHeight"`
+	JumboMaxWidth         int                          `pulumi:"jumboMaxWidth"`
+	MaxWaitMs             int                          `pulumi:"maxWaitMs"`
+	MediaType             string                       `pulumi:"mediaType"`
+	MsDelay               int                          `pulumi:"msDelay"`
+	Name                  string                       `pulumi:"name"`
+	ProxyId               string                       `pulumi:"proxyId"`
+	RenderWhenReady       bool                         `pulumi:"renderWhenReady"`
+	RequestOverrides      []GetTemplateRequestOverride `pulumi:"requestOverrides"`
+	Selector              string                       `pulumi:"selector"`
+	StorageDestinationId  string                       `pulumi:"storageDestinationId"`
+	TemplateType          string                       `pulumi:"templateType"`
+	Timezone              string                       `pulumi:"timezone"`
+	TransparentBackground bool                         `pulumi:"transparentBackground"`
+	UpdatedAt             string                       `pulumi:"updatedAt"`
+	Version               string                       `pulumi:"version"`
+	ViewportHeight        int                          `pulumi:"viewportHeight"`
+	ViewportLandscape     bool                         `pulumi:"viewportLandscape"`
+	ViewportMobile        bool                         `pulumi:"viewportMobile"`
+	ViewportTouch         bool                         `pulumi:"viewportTouch"`
+	ViewportWidth         int                          `pulumi:"viewportWidth"`
 }
 
 func LookupTemplateOutput(ctx *pulumi.Context, args LookupTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateResultOutput {
@@ -165,6 +166,10 @@ func (o LookupTemplateResultOutput) ProxyId() pulumi.StringOutput {
 
 func (o LookupTemplateResultOutput) RenderWhenReady() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTemplateResult) bool { return v.RenderWhenReady }).(pulumi.BoolOutput)
+}
+
+func (o LookupTemplateResultOutput) RequestOverrides() GetTemplateRequestOverrideArrayOutput {
+	return o.ApplyT(func(v LookupTemplateResult) []GetTemplateRequestOverride { return v.RequestOverrides }).(GetTemplateRequestOverrideArrayOutput)
 }
 
 func (o LookupTemplateResultOutput) Selector() pulumi.StringOutput {
