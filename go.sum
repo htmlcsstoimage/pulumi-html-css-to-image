@@ -347,10 +347,10 @@ github.com/hexops/gotextdiff v1.0.3 h1:gitA9+qJrrTCsiCl7+kh75nPqQt1cx4ZkudSTLoUq
 github.com/hexops/gotextdiff v1.0.3/go.mod h1:pSWU5MAI3yDq+fZBTazCSJysOMbxWL1BSow5/V2vxeg=
 github.com/hexops/valast v1.5.0 h1:FBTuvVi0wjTngtXJRZXMbkN/Dn6DgsUsBwch2DUJU8Y=
 github.com/hexops/valast v1.5.0/go.mod h1:Jcy1pNH7LNraVaAZDLyv21hHg2WBv9Nf9FL6fGxU7o4=
-github.com/htmlcsstoimage/go-client v0.3.1 h1:r6QLBIbBbQ7Blml5/MZaqStfl1SEY13CEQUiwo7e4wU=
-github.com/htmlcsstoimage/go-client v0.3.1/go.mod h1:XTesAMi1osxjLABYTDRMMKgMkeeNCkByDRWW6TsucZI=
-github.com/htmlcsstoimage/terraform-provider-html-css-to-image v0.1.0 h1:8eAD+pgMiCIYJ0TBtZ3Rt6CI4qqeT59YvqVj2xsrb6o=
-github.com/htmlcsstoimage/terraform-provider-html-css-to-image v0.1.0/go.mod h1:cdqnDS4NThFxInzd1H76HPlH7mp5iNOvoRtQVBar14k=
+github.com/htmlcsstoimage/go-client v0.4.1 h1:kPxFQKmGZVwmClNR0nfT93eruk1othILsLMtX/hvYcw=
+github.com/htmlcsstoimage/go-client v0.4.1/go.mod h1:XTesAMi1osxjLABYTDRMMKgMkeeNCkByDRWW6TsucZI=
+github.com/htmlcsstoimage/terraform-provider-html-css-to-image v0.2.1 h1:kgfKIhOX3lCQtZi38q3ExF2NoV47l8HoTFI5i0LWgao=
+github.com/htmlcsstoimage/terraform-provider-html-css-to-image v0.2.1/go.mod h1:JKegkYRmzfv61q9wFYMPMrFYuAdm+YejZPZ9m5Hy/QA=
 github.com/huandu/xstrings v1.3.1/go.mod h1:y5/lhBue+AyNmUVz9RLU9xbLR0o4KIIExikq4ovT0aE=
 github.com/huandu/xstrings v1.3.2/go.mod h1:y5/lhBue+AyNmUVz9RLU9xbLR0o4KIIExikq4ovT0aE=
 github.com/huandu/xstrings v1.3.3 h1:/Gcsuc1x8JVbJ9/rlye4xZnVAbEkGauT8lbebqcQws4=

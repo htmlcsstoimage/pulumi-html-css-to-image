@@ -16,6 +16,6 @@ outputs:
   templateHtml: ${template.html}
 ```
 
-Omit `version` to read the latest version on each invocation. Pass a decimal string to pin a specific version. The returned `version` is also a string, preserving all int64 digits. The result includes saved rendering settings, template type, and timestamps. Unset settings remain null.
+Omit `version` to read the latest version on each invocation. Pass a decimal string to pin a specific version. The returned `version` is also a string, preserving all int64 digits. The result includes saved rendering settings, including `requestOverrides`, template type, and timestamps. Unset settings remain null.
 
 Referencing `template.version` in an image's `templateVersion` makes template changes trigger image replacement. Lookups do not manage or render the template. Missing templates, missing versions, and authorization failures are errors.

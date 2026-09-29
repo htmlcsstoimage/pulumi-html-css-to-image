@@ -24,7 +24,7 @@ func Info(version string) tfbridge.ProviderInfo {
 		Repository:          "https://github.com/htmlcsstoimage/pulumi-html-css-to-image",
 		PluginDownloadURL:   "github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image",
 		MetadataInfo:        tfbridge.NewProviderMetadata(nil),
-		SchemaPostProcessor: preserveAPILiterals,
+		SchemaPostProcessor: postProcessSchema,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_id":   {Name: "apiId", Default: &tfbridge.DefaultInfo{EnvVars: []string{"HCTI_API_ID"}}},
 			"api_key":  {Name: "apiKey", Default: &tfbridge.DefaultInfo{EnvVars: []string{"HCTI_API_KEY"}}},

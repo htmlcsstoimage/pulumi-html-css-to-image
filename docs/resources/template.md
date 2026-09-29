@@ -29,6 +29,7 @@ Version identifiers are **decimal strings** in Pulumi, preserving the full API i
 | `name` | String | No | The name of the template, used to identify it in your account. Maximum: 64 characters. |
 | `proxyId` | String | No | Specifies which configured organization proxy to use when rendering. |
 | `renderWhenReady` | Boolean | No | Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent. |
+| `requestOverrides` | Array of [TemplateRequestOverride](#nested-objects) | No | Browser network request block rules. Requires a paid plan. |
 | `selector` | String | No | A CSS selector for an element in the HTML. We’ll crop the image to this specific element. |
 | `storageDestinationId` | String | No | Specifies which configured organization storage destination receives the rendered image. |
 | `timezone` | String | No | Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier. |
@@ -50,6 +51,16 @@ All inputs above are also readable resource outputs. Omitted nullable rendering 
 | `templateType` | String | Template type; this resource manages html_css templates. |
 | `updatedAt` | String | Last update timestamp. |
 | `version` | String | Latest saved template version. Represented as a decimal string in Pulumi to preserve int64 precision. |
+
+## Nested objects
+
+### TemplateRequestOverride
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | String | Yes | Currently `block`. |
+| `resourceTypes` | Array of String | No | Browser resource types to match. |
+| `url` | String | No | Case-sensitive URL wildcard pattern using `*`. |
 
 ## Import
 

@@ -37,6 +37,7 @@ In .NET, the `imageUrl` output is named `RenderingUrl` because C# forbids a memb
 | `pdfOptions` | [ImageUrlPdfOptions](#nested-objects) | No | Rendering option. |
 | `proxyId` | String | No | Specifies which configured organization proxy to use when rendering. |
 | `renderWhenReady` | Boolean | No | Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent. |
+| `requestOverrides` | Array of [ImageUrlRequestOverride](#nested-objects) | No | Browser network request block rules. Requires a paid plan. |
 | `selector` | String | No | A CSS selector for an element in the HTML. We’ll crop the image to this specific element. |
 | `storageDestinationId` | String | No | Specifies which configured organization storage destination receives the rendered image. |
 | `timezone` | String | No | Sets the IANA timezone used by Chrome while rendering. Must be a recognized IANA timezone identifier. |
@@ -67,6 +68,14 @@ All inputs above are also readable resource outputs. Omitted nullable rendering 
 | `storageDestinationHctiStorageDisabled` | Boolean | Whether rendered output is saved only to custom storage. |
 
 ## Nested objects
+
+### ImageUrlRequestOverride
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | String | Yes | Currently `block`. |
+| `resourceTypes` | Array of String | No | Browser resource types to match. |
+| `url` | String | No | Case-sensitive URL wildcard pattern using `*`. |
 
 ### ImageUrlPdfOptions
 

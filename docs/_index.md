@@ -45,14 +45,14 @@ Maven:
 <dependency>
     <groupId>com.htmlcsstoimage</groupId>
     <artifactId>pulumi</artifactId>
-    <version>0.1.2</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```groovy
-implementation 'com.htmlcsstoimage:pulumi:0.1.2'
+implementation 'com.htmlcsstoimage:pulumi:0.2.0'
 ```
 
 {{% /choosable %}}

@@ -23,7 +23,7 @@ For Java, add this Maven dependency:
 <dependency>
   <groupId>com.htmlcsstoimage</groupId>
   <artifactId>pulumi</artifactId>
-  <version>0.1.2</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ resources:
     type: pulumi:providers:html-css-to-image
     defaultProvider: true
     options:
-      version: 0.1.2
+      version: 0.2.0
       pluginDownloadURL: github://api.github.com/htmlcsstoimage/pulumi-html-css-to-image
   card:
     type: html-css-to-image:index:ImageHtmlCss
@@ -49,6 +49,9 @@ resources:
       html: '<h1>Hello from Pulumi</h1>'
       css: 'h1 { font-family: Inter; padding: 48px; }'
       googleFonts: [Inter]
+      requestOverrides:
+        - action: block
+          resourceTypes: [script]
 outputs:
   imageUrl: ${card.imageUrl}
 ```

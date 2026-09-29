@@ -123,6 +123,12 @@
           "renderWhenReady": {
             "type": "boolean"
           },
+          "requestOverrides": {
+            "items": {
+              "$ref": "#/types/html-css-to-image:index/getTemplateRequestOverride:getTemplateRequestOverride"
+            },
+            "type": "array"
+          },
           "selector": {
             "type": "string"
           },
@@ -178,6 +184,7 @@
           "name",
           "proxyId",
           "renderWhenReady",
+          "requestOverrides",
           "selector",
           "storageDestinationId",
           "templateType",
@@ -550,7 +557,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "description": "HTML/CSS images use Twemoji by default; set true to use supplied or native emoji fonts instead.",
           "type": "boolean"
         },
         "format": {
@@ -611,6 +618,13 @@
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
           "type": "boolean"
         },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/ImageHtmlCssRequestOverride:ImageHtmlCssRequestOverride"
+          },
+          "type": "array"
+        },
         "selector": {
           "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
           "type": "string"
@@ -666,7 +680,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "description": "HTML/CSS images use Twemoji by default; set true to use supplied or native emoji fonts instead.",
           "type": "boolean"
         },
         "format": {
@@ -755,6 +769,13 @@
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
           "type": "boolean"
         },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/ImageHtmlCssRequestOverride:ImageHtmlCssRequestOverride"
+          },
+          "type": "array"
+        },
         "savedToStorageDestinationAt": {
           "description": "Last base-image save to custom storage, when available.",
           "type": "string"
@@ -836,7 +857,7 @@
             "type": "number"
           },
           "disableTwemoji": {
-            "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+            "description": "HTML/CSS images use Twemoji by default; set true to use supplied or native emoji fonts instead.",
             "type": "boolean"
           },
           "format": {
@@ -924,6 +945,13 @@
           "renderWhenReady": {
             "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
             "type": "boolean"
+          },
+          "requestOverrides": {
+            "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+            "items": {
+              "$ref": "#/types/html-css-to-image:index/ImageHtmlCssRequestOverride:ImageHtmlCssRequestOverride"
+            },
+            "type": "array"
           },
           "savedToStorageDestinationAt": {
             "description": "Last base-image save to custom storage, when available.",
@@ -1169,7 +1197,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "description": "Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.",
           "type": "boolean"
         },
         "format": {
@@ -1238,6 +1266,13 @@
         "renderWhenReady": {
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
           "type": "boolean"
+        },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/ImageUrlRequestOverride:ImageUrlRequestOverride"
+          },
+          "type": "array"
         },
         "selector": {
           "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
@@ -1309,7 +1344,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "description": "Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.",
           "type": "boolean"
         },
         "format": {
@@ -1412,6 +1447,13 @@
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
           "type": "boolean"
         },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/ImageUrlRequestOverride:ImageUrlRequestOverride"
+          },
+          "type": "array"
+        },
         "savedToStorageDestinationAt": {
           "description": "Last base-image save to custom storage, when available.",
           "type": "string"
@@ -1508,7 +1550,7 @@
             "type": "number"
           },
           "disableTwemoji": {
-            "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+            "description": "Set false to inject Twemoji into the loaded URL page. Omitted or true leaves the page's emoji handling unchanged.",
             "type": "boolean"
           },
           "format": {
@@ -1610,6 +1652,13 @@
           "renderWhenReady": {
             "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
             "type": "boolean"
+          },
+          "requestOverrides": {
+            "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+            "items": {
+              "$ref": "#/types/html-css-to-image:index/ImageUrlRequestOverride:ImageUrlRequestOverride"
+            },
+            "type": "array"
           },
           "savedToStorageDestinationAt": {
             "description": "Last base-image save to custom storage, when available.",
@@ -2194,7 +2243,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "description": "Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.",
           "type": "boolean"
         },
         "googleFonts": {
@@ -2239,6 +2288,13 @@
         "renderWhenReady": {
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
           "type": "boolean"
+        },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/TemplateRequestOverride:TemplateRequestOverride"
+          },
+          "type": "array"
         },
         "selector": {
           "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
@@ -2299,7 +2355,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+          "description": "Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.",
           "type": "boolean"
         },
         "googleFonts": {
@@ -2344,6 +2400,13 @@
         "renderWhenReady": {
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
           "type": "boolean"
+        },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/TemplateRequestOverride:TemplateRequestOverride"
+          },
+          "type": "array"
         },
         "selector": {
           "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
@@ -2428,7 +2491,7 @@
             "type": "number"
           },
           "disableTwemoji": {
-            "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.",
+            "description": "Templates use Twemoji by default; set true to use supplied or native emoji fonts instead.",
             "type": "boolean"
           },
           "googleFonts": {
@@ -2473,6 +2536,13 @@
           "renderWhenReady": {
             "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.",
             "type": "boolean"
+          },
+          "requestOverrides": {
+            "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.",
+            "items": {
+              "$ref": "#/types/html-css-to-image:index/TemplateRequestOverride:TemplateRequestOverride"
+            },
+            "type": "array"
           },
           "selector": {
             "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.",
@@ -2580,6 +2650,29 @@
       ],
       "type": "object"
     },
+    "html-css-to-image:index/ImageHtmlCssRequestOverride:ImageHtmlCssRequestOverride": {
+      "properties": {
+        "action": {
+          "description": "Currently only `block` is supported.\n",
+          "type": "string"
+        },
+        "resourceTypes": {
+          "description": "Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.\n",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index:RequestOverrideResourceType"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "Case-sensitive URL wildcard pattern using `*`; at most 512 characters.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action"
+      ],
+      "type": "object"
+    },
     "html-css-to-image:index/ImageUrlPdfOptions:ImageUrlPdfOptions": {
       "properties": {
         "margins": {
@@ -2632,6 +2725,29 @@
       ],
       "type": "object"
     },
+    "html-css-to-image:index/ImageUrlRequestOverride:ImageUrlRequestOverride": {
+      "properties": {
+        "action": {
+          "description": "Currently only `block` is supported.\n",
+          "type": "string"
+        },
+        "resourceTypes": {
+          "description": "Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.\n",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index:RequestOverrideResourceType"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "Case-sensitive URL wildcard pattern using `*`; at most 512 characters.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action"
+      ],
+      "type": "object"
+    },
     "html-css-to-image:index/OgConfigDefaultOptions:OgConfigDefaultOptions": {
       "properties": {
         "additionalHeaderOrigins": {
@@ -2658,7 +2774,7 @@
           "type": "number"
         },
         "disableTwemoji": {
-          "description": "Disables the Twemoji fallback and renders emoji using native fonts instead.\n",
+          "description": "Set false to inject Twemoji into the captured URL page. Omitted or true leaves the page's emoji handling unchanged.\n",
           "type": "boolean"
         },
         "headers": {
@@ -2697,6 +2813,13 @@
           "description": "Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.\n",
           "type": "boolean"
         },
+        "requestOverrides": {
+          "description": "Browser network request block rules. Requires a paid plan; at most 100 rules. A rule matches its URL wildcard and/or resource types, and both must match when supplied together.\n",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index/OgConfigDefaultOptionsRequestOverride:OgConfigDefaultOptionsRequestOverride"
+          },
+          "type": "array"
+        },
         "selector": {
           "description": "A CSS selector for an element in the HTML. We’ll crop the image to this specific element.\n",
           "type": "string"
@@ -2734,6 +2857,29 @@
           "type": "integer"
         }
       },
+      "type": "object"
+    },
+    "html-css-to-image:index/OgConfigDefaultOptionsRequestOverride:OgConfigDefaultOptionsRequestOverride": {
+      "properties": {
+        "action": {
+          "description": "Currently only `block` is supported.\n",
+          "type": "string"
+        },
+        "resourceTypes": {
+          "description": "Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.\n",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index:RequestOverrideResourceType"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "Case-sensitive URL wildcard pattern using `*`; at most 512 characters.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action"
+      ],
       "type": "object"
     },
     "html-css-to-image:index/OgConfigTemplateValuesMapping:OgConfigTemplateValuesMapping": {
@@ -3025,6 +3171,56 @@
       ],
       "type": "object"
     },
+    "html-css-to-image:index/TemplateRequestOverride:TemplateRequestOverride": {
+      "properties": {
+        "action": {
+          "description": "Currently only `block` is supported.\n",
+          "type": "string"
+        },
+        "resourceTypes": {
+          "description": "Browser resource types, such as `image`, `script`, `xhr`, and `fetch`. Each value must be a supported resource type.\n",
+          "items": {
+            "$ref": "#/types/html-css-to-image:index:RequestOverrideResourceType"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "Case-sensitive URL wildcard pattern using `*`; at most 512 characters.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action"
+      ],
+      "type": "object"
+    },
+    "html-css-to-image:index/getTemplateRequestOverride:getTemplateRequestOverride": {
+      "language": {
+        "nodejs": {
+          "requiredInputs": []
+        }
+      },
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "resourceTypes": {
+          "items": {
+            "$ref": "#/types/html-css-to-image:index:RequestOverrideResourceType"
+          },
+          "type": "array"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "resourceTypes",
+        "url"
+      ],
+      "type": "object"
+    },
     "html-css-to-image:index/getTemplateVersionsVersion:getTemplateVersionsVersion": {
       "language": {
         "nodejs": {
@@ -3066,7 +3262,77 @@
         "version"
       ],
       "type": "object"
+    },
+    "html-css-to-image:index:RequestOverrideResourceType": {
+      "description": "Browser resource type matched by a request override rule.",
+      "enum": [
+        {
+          "name": "Beacon",
+          "value": "beacon"
+        },
+        {
+          "name": "Document",
+          "value": "document"
+        },
+        {
+          "name": "Stylesheet",
+          "value": "stylesheet"
+        },
+        {
+          "name": "Image",
+          "value": "image"
+        },
+        {
+          "name": "ImageSet",
+          "value": "image_set"
+        },
+        {
+          "name": "Media",
+          "value": "media"
+        },
+        {
+          "name": "Font",
+          "value": "font"
+        },
+        {
+          "name": "Script",
+          "value": "script"
+        },
+        {
+          "name": "TextTrack",
+          "value": "text_track"
+        },
+        {
+          "name": "Xhr",
+          "value": "xhr"
+        },
+        {
+          "name": "Fetch",
+          "value": "fetch"
+        },
+        {
+          "name": "EventSource",
+          "value": "event_source"
+        },
+        {
+          "name": "Manifest",
+          "value": "manifest"
+        },
+        {
+          "name": "Ping",
+          "value": "ping"
+        },
+        {
+          "name": "Img",
+          "value": "img"
+        },
+        {
+          "name": "Other",
+          "value": "other"
+        }
+      ],
+      "type": "string"
     }
   },
-  "version": "0.1.2"
+  "version": "0.2.0"
 }

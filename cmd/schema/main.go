@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	version := flag.String("version", "0.1.2", "Provider version")
+	version := flag.String("version", "0.2.0", "Provider version")
 	flag.Parse()
 	// The bridge's default docs lookup assumes a checkout directory named
 	// "provider". Resolve our pinned module explicitly so local and CI generation

@@ -61,6 +61,7 @@ All inputs above are also readable resource outputs. Omitted nullable rendering 
 | `mediaType` | String | No | Sets the CSS media type used while rendering the page. Valid values: print or screen.  |
 | `msDelay` | Integer | No | Adds extra time in milliseconds before taking the screenshot so JavaScript can execute. Minimum: 0. Maximum: 10000.  |
 | `proxyId` | String | No | Configured proxy ID. Must refer to an enabled proxy.  |
+| `requestOverrides` | Array of [OgConfigDefaultOptionsRequestOverride](#nested-objects) | No | Browser network request block rules inherited by generated HTML/CSS images. Requires a paid plan. |
 | `renderWhenReady` | Boolean | No | Waits until the page signals that the screenshot is ready. The image fails if the readiness signal is never sent.  |
 | `selector` | String | No | A CSS selector for an element in the HTML. We’ll crop the image to this specific element.  |
 | `storageDestinationId` | String | No | Configured storage destination ID. Must be enabled and allow HCTI storage.  |
@@ -71,6 +72,14 @@ All inputs above are also readable resource outputs. Omitted nullable rendering 
 | `viewportMobile` | Boolean | No | Specifies whether the page uses mobile viewport behavior, including its viewport meta tag.  |
 | `viewportTouch` | Boolean | No | Specifies whether the emulated viewport supports touch events.  |
 | `viewportWidth` | Integer | No | Sets the width of Chrome's viewport and disables automatic cropping. Minimum: 1. Maximum: 6000. Both viewport dimensions must be supplied together.  |
+
+### OgConfigDefaultOptionsRequestOverride
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | String | Yes | Currently `block`. |
+| `resourceTypes` | Array of String | No | Browser resource types to match. |
+| `url` | String | No | Case-sensitive URL wildcard pattern using `*`. |
 
 ### OgConfigTemplateValuesMapping
 

@@ -5,8 +5,8 @@ go 1.25.11
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
 	github.com/hashicorp/terraform-plugin-go v0.31.0
-	github.com/htmlcsstoimage/go-client v0.3.1
-	github.com/htmlcsstoimage/terraform-provider-html-css-to-image v0.1.0
+	github.com/htmlcsstoimage/go-client v0.4.1
+	github.com/htmlcsstoimage/terraform-provider-html-css-to-image v0.2.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
 	github.com/pulumi/pulumi/pkg/v3 v3.259.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
